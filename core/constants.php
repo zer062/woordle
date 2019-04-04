@@ -13,3 +13,4 @@ const WOORDLE_TAXONOMIES_PATH = WOORDLE_BACKEND_PATH . '/taxonomies';
 
 const WOORDLE_BACKEND_RESOURCES_URL = WP_PLUGIN_URL . '/woordle/backend/resourses';
 const WOORDLE_FRONTEND_RESOURCES_URL = WP_PLUGIN_URL . '/woordle/frontend/resourses';
+const WOORDLE_URL = WP_PLUGIN_URL . '/woordle';

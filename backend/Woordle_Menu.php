@@ -2,11 +2,17 @@
 
 class Woordle_Menu {
 
+	/**
+	 * Setup woordle admin menu actions
+	 */
 	public function setup_woordle_menu() {
 		add_action( 'admin_menu', [ $this, 'create_woordle_admin_menu' ] );
 		add_action('parent_file', [ $this, 'fix_category_course_navigation' ] );
 	}
 
+	/**
+	 * Create woordle menus
+	 */
 	public function create_woordle_admin_menu() {
 		// Add Woordle main page
 		add_menu_page(
@@ -29,6 +35,10 @@ class Woordle_Menu {
 		);
 	}
 
+	/**
+	 * Fix category course taxonomy navigations. Active woordle main menu
+	 * @return string
+	 */
 	public function fix_category_course_navigation() {
 		global $current_screen;
 		$taxonomy = $current_screen->taxonomy;
