@@ -9,11 +9,13 @@ class Woordle
 
 	public function __construct() {
 		$this->loader = new Woordle_Loader();
-
 		$this->init_ctp();
 	}
 
 	private function init_ctp() {
 		$this->loader->load_models();
+		$this->loader->setup_woordle_admin_menu();
 	}
+
+
 }
