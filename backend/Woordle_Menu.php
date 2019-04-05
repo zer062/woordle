@@ -30,7 +30,7 @@ class Woordle_Menu {
 			__( 'Course categories', 'woordle' ),
 			__( 'Course categories', 'woordle' ),
 			'edit_posts',
-			'edit-tags.php?taxonomy=category-course',
+			'edit-tags.php?taxonomy=category_course',
 			false
 		);
 	}
@@ -39,10 +39,10 @@ class Woordle_Menu {
 	 * Fix category course taxonomy navigations. Active woordle main menu
 	 * @return string
 	 */
-	public function fix_category_course_navigation() {
+	public function fix_category_course_navigation( $parent_file ) {
 		global $current_screen;
 		$taxonomy = $current_screen->taxonomy;
-		if ( $taxonomy == 'category-course' ) {
+		if ( $taxonomy == 'category_course' ) {
 			$parent_file = 'woordle';
 		}
 		return $parent_file;

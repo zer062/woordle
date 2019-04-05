@@ -23,5 +23,5 @@ return [
 	'show_admin_column'     => 'course-categories',
 	'update_count_callback' => '_update_post_term_count',
 	'query_var'             => true,
-	'rewrite'               => array( 'slug' => 'category-course' ),
+	'rewrite'               => [ 'slug' => 'category_course' ],
 ];

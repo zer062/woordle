@@ -22,7 +22,7 @@ return [
 	'show_ui'            => true,
 	'show_in_menu'       => 'woordle',
 	'query_var'          => true,
-	'rewrite'            => array( 'slug' => 'course' ),
+	'rewrite'            => array( 'slug' => 'courses' ),
 	'capability_type'    => 'post',
 	'has_archive'        => true,
 	'hierarchical'       => false,

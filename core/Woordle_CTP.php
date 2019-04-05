@@ -5,6 +5,8 @@ class Woordle_CTP {
 	public function init_woordle_ctp() {
 		add_action( 'init', [ $this, 'register_posts' ] );
 		add_action( 'init', [ $this, 'register_taxonomies' ] );
+
+		new Woordle_Category_Course();
 	}
 
 	public function scan_ctp() {
@@ -39,7 +41,7 @@ class Woordle_CTP {
 
 		foreach ( $taxonomies as $tax ) {
 			$tax_name = str_replace('.php', '', $tax );
-			$tax_data = explode( '_', $tax_name );
+			$tax_data = explode( '-', $tax_name );
 			$tax_file = WOORDLE_TAXONOMIES_PATH . "/{$tax}";
 			$tax_args = require_once ( $tax_file );
 			register_taxonomy( $tax_data[1], $tax_data[0], $tax_args );;

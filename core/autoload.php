@@ -12,6 +12,8 @@ $woordle_files = [
 	WOORDLE_BACKEND_PATH . '/Woordle_Menu.php',
 	WOORDLE_CORE_PATH . '/Woordle_CTP.php',
 	WOORDLE_CORE_PATH . '/Woordle_Vendors.php',
+	WOORDLE_BACKEND_PATH . '/Woordle_Category_Course.php',
+	WOORDLE_BACKEND_PATH . '/Woordle_Admin_Resources.php',
 ];
 
 foreach ( $woordle_files as $class_path ) {

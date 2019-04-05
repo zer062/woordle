@@ -11,6 +11,7 @@ class Woordle
 		$this->loader = new Woordle_Loader();
 		$this->init_ctp();
 		$this->load_vendors();
+		$this->load_resources();
 	}
 
 	private function init_ctp() {
@@ -21,6 +22,10 @@ class Woordle
 	private function load_vendors() {
 		$vendors = new Woordle_Vendors();
 		$vendors->load_acf();
+	}
+
+	private function load_resources() {
+		$this->loader->load_admin_resources();
 	}
 
 }

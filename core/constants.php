@@ -11,6 +11,6 @@ const WOORDLE_FRONTEND_PATH = WOORDLE_ROOT_PATH . '/frontend';
 const WOORDLE_MODELS_PATH = WOORDLE_BACKEND_PATH . '/post_types';
 const WOORDLE_TAXONOMIES_PATH = WOORDLE_BACKEND_PATH . '/taxonomies';
 
-const WOORDLE_BACKEND_RESOURCES_URL = WP_PLUGIN_URL . '/woordle/backend/resourses';
-const WOORDLE_FRONTEND_RESOURCES_URL = WP_PLUGIN_URL . '/woordle/frontend/resourses';
+const WOORDLE_BACKEND_RESOURCES_URL = WP_PLUGIN_URL . '/woordle/backend/resources';
+const WOORDLE_FRONTEND_RESOURCES_URL = WP_PLUGIN_URL . '/woordle/frontend/resources';
 const WOORDLE_URL = WP_PLUGIN_URL . '/woordle';
