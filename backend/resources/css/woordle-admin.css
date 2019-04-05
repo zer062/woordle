@@ -1,0 +1,13 @@
+.wo-danger {
+    color: #a00;
+}
+
+.wo-success {
+    color: #46b450;
+}
+
+span.wo-column-icon {
+    display: block;
+    width: 100%;
+    font-size: 30px;
+}
