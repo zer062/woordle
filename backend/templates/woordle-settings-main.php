@@ -1,4 +1,5 @@
 <?php
+
 $woordle = Woordle::get_instance();
 $tabs = $woordle->get_option_tabs();
 $active_tab = 'general_settings';

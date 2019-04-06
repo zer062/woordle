@@ -41,6 +41,7 @@ class Woordle
 
 	private function load_resources() {
 		$this->loader->load_admin_resources();
+		$this->loader->load_resources();
 	}
 
 	private function load_templates() {

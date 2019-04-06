@@ -8,9 +8,13 @@ class Woordle_Template {
 
 	public function load_templates( $template ) {
 		global $post;
+		if ( is_single( 'courses' ) || $post->post_type == 'courses' ) {
 
-		if ($post->post_type == 'courses' ) {
-			woo_load_template( 'single-course' );
+			$template = WOORDLE_FRONTEND_PATH . '/templates/single-courses.php';
+
+			if ( file_exists( get_stylesheet_directory() . '/single-courses.php' ) ) {
+				$template = get_stylesheet_directory() . '/single-courses.php';
+			}
 		}
 
 		return $template;
