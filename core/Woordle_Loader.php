@@ -17,4 +17,9 @@ class Woordle_Loader {
 		$woordle_admin_resources = new Woordle_Admin_Resources();
 		$woordle_admin_resources->load_resources();
 	}
+
+	public function load_woordle_options() {
+		$options = new Woordle_Options();
+		return $options;
+	}
 }
