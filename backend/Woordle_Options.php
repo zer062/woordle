@@ -41,7 +41,7 @@ class Woordle_Options {
 			'woordle_woocommerce_settings',
 			__( 'Woocommerce Settings', 'woordle' ),
 			WOORDLE_BACKEND_PATH . '/templates/settings/woordle-woocommerce-settings.php',
-			woo_use_woocommerce()
+			( woo_use_woocommerce() && woo_has_woocommerce() )
 		);
 
 		$this->setTab(
