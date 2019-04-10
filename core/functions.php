@@ -49,6 +49,11 @@ function course_description() {
 	echo get_field( 'woordle_course_information_woordle_course_description', $post->ID );
 }
 
+function course_grade() {
+	global $post;
+	echo get_field( 'woordle_course_information_woordle_course_content', $post->ID );
+}
+
 function has_course_will_learn() {
 	global $post;
 	$learn = get_field( 'woordle_course_information_woorlde_to_learn', $post->ID );

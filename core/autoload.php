@@ -18,6 +18,7 @@ $woordle_files = [
 	WOORDLE_BACKEND_PATH . '/Woordle_Options.php',
 	WOORDLE_CORE_PATH . '/Woordle_Template.php',
 	WOORDLE_CORE_PATH . '/functions.php',
+	WOORDLE_BACKEND_PATH . '/woocommerce/functions.php',
 ];
 
 foreach ( $woordle_files as $class_path ) {

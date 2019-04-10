@@ -281,30 +281,6 @@
             "layout": "row",
             "sub_fields": [
                 {
-                    "key": "field_5ca8dc2f95fd0",
-                    "label": "Course header background image",
-                    "name": "woordle_course_background_image",
-                    "type": "image",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "preview_size": "thumbnail",
-                    "library": "all",
-                    "min_width": "",
-                    "min_height": "",
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": "png, jpg, jpeg"
-                },
-                {
                     "key": "field_5ca65da97edab",
                     "label": "Promotional video",
                     "name": "woordle_course_promotional_video",
@@ -529,7 +505,15 @@
                     "type": "select",
                     "instructions": "Select Moodle course format",
                     "required": 1,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5ca61bf6eb504",
+                                "operator": "==",
+                                "value": "course"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -730,5 +714,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1554570342
+    "modified": 1554867577
 }

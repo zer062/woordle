@@ -19,25 +19,35 @@ class Woordle_Options {
 		}
 	}
 
-	public function setTab( $tab_name, $tab_title, $tab_template ) {
-		$this->tabs[] = [
-			'name' => $tab_name,
-			'title' => $tab_title,
-			'template' => $tab_template
-		];
+	public function setTab( $tab_name, $tab_title, $tab_template, $condition = true ) {
+
+		if ( $condition ) {
+			$this->tabs[] = [
+				'name' => $tab_name,
+				'title' => $tab_title,
+				'template' => $tab_template
+			];
+		}
 	}
 
 	public function set_default_tabs() {
 		$this->setTab(
-			'general_settings',
+			'woordle_general_settings',
 			__( 'General Settings', 'woordle' ),
-			WOORDLE_BACKEND_PATH . '/templates/woordle-general-settings.php'
+			WOORDLE_BACKEND_PATH . '/templates/settings/woordle-general-settings.php'
 		);
 
 		$this->setTab(
-			'moodle_settings',
+			'woordle_woocommerce_settings',
+			__( 'Woocommerce Settings', 'woordle' ),
+			WOORDLE_BACKEND_PATH . '/templates/settings/woordle-woocommerce-settings.php',
+			woo_use_woocommerce()
+		);
+
+		$this->setTab(
+			'woordle_moodle_settings',
 			__( 'Moodle Settings', 'woordle' ),
-			WOORDLE_BACKEND_PATH . '/templates/woordle-moodle-settings.php'
+			WOORDLE_BACKEND_PATH . '/templates/settings/woordle-moodle-settings.php'
 		);
 	}
 

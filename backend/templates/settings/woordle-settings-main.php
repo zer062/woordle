@@ -2,7 +2,7 @@
 
 $woordle = Woordle::get_instance();
 $tabs = $woordle->get_option_tabs();
-$active_tab = 'general_settings';
+$active_tab = 'woordle_general_settings';
 
 if( isset( $_GET[ 'tab' ] ) ) {
 	$active_tab = $_GET[ 'tab' ];

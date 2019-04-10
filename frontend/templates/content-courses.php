@@ -1,7 +1,9 @@
-<section id="woo-course-<?php echo get_the_ID();?>">
+<section id="woo-course-<?php echo get_the_ID();?>" class="container">
 
-    <section class="woo-course-header">
-        <?php the_title('<h1>', '</h1>'); ?>
+    <section class="woo-course-header" <?php echo (has_post_thumbnail()) ? 'style="background: url(' . get_the_post_thumbnail_url() . ') center center no-repeat; background-size: cover;"' : ''; ?> >
+        <div class="<?php echo ( has_post_thumbnail() ) ? 'woo-course-title overlay' : 'woo-course-title';?>">
+            <?php the_title('<h1>', '</h1>'); ?>
+        </div>
 	</section>
 
     <section class="woo-course-content">
@@ -15,6 +17,11 @@
 			            <?php course_will_learn(); ?>
                     </div>
 	            <?php endif;?>
+
+                <div class="woo-course-grade">
+                    <h3 class="woo-course-section-title"><?php _e( 'Course grade', 'woordle' );?></h3>
+		            <?php course_grade(); ?>
+                </div>
 
 	            <?php if ( has_course_requirements() ) : ?>
                     <div class="woo-course-requirements">
@@ -34,7 +41,7 @@
 
         <div class="woo-course-sidebar">
             <div class="woo-course-sidebar-content">
-                <a href="#" class="btn btn-enrolment">
+                <a href="#" class="btn btn-primary btn-block btn-enrolment">
 		            <?php _e( 'Enrol this course');?>
                 </a>
 	            <?php if( has_promotional_video() ): ?>

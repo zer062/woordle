@@ -45,7 +45,7 @@ class Woordle_Menu {
 	}
 
 	public function load_woordle_settings_page() {
-		include WOORDLE_BACKEND_PATH . '/templates/woordle-settings-main.php';
+		include WOORDLE_BACKEND_PATH . '/templates/settings/woordle-settings-main.php';
 	}
 
 	/**
