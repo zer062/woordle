@@ -229,11 +229,11 @@
                     "ui_off_text": ""
                 },
                 {
-                    "key": "field_5ca61c745a14c",
-                    "label": "Sales this course with woocommerce?",
+                    "key": "field_5cae570581001",
+                    "label": "Sale this course with Woocommerce",
                     "name": "woordle_sale_course_woocommerce",
                     "type": "true_false",
-                    "instructions": "Selecting this option, you will sale this course in Woocommerce",
+                    "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -695,6 +695,109 @@
                     "ui_off_text": ""
                 }
             ]
+        },
+        {
+            "key": "field_5cae52c26da20",
+            "label": "Woocommerce Settings",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5ca61c745a14c",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5cae52e76da21",
+            "label": "Woocommerce Settings",
+            "name": "woordle_woocommerce_settings",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "row",
+            "sub_fields": [
+                {
+                    "key": "field_5cae53056da22",
+                    "label": "Woocommerce product category",
+                    "name": "woordle_woocommerce_product_category",
+                    "type": "taxonomy",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "taxonomy": "product_cat",
+                    "field_type": "select",
+                    "allow_null": 0,
+                    "add_term": 1,
+                    "save_terms": 0,
+                    "load_terms": 0,
+                    "return_format": "object",
+                    "multiple": 0
+                },
+                {
+                    "key": "field_5cae535b6bb89",
+                    "label": "SKU",
+                    "name": "woordle_woocommerce_sku",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5cae537d6bb8a",
+                    "label": "Course Price",
+                    "name": "woordle_woocommerce_course_price",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "0,00",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": "",
+                    "max": "",
+                    "step": ""
+                }
+            ]
         }
     ],
     "location": [
@@ -714,5 +817,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1554867577
+    "modified": 1554929855
 }
