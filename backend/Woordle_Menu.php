@@ -27,12 +27,25 @@ class Woordle_Menu {
 
 		add_submenu_page(
 			'woordle',
-			__( 'Course categories', 'woordle' ),
-			__( 'Course categories', 'woordle' ),
+			__( 'Course Categories', 'woordle' ),
+			__( 'Course Categories', 'woordle' ),
 			'edit_posts',
 			'edit-tags.php?taxonomy=category_course',
 			false
 		);
+
+		add_submenu_page(
+			'woordle',
+			__( 'Settings', 'woordle' ),
+			__( 'Settings', 'woordle' ),
+			'manage_options',
+			'woordle-settings',
+			[ $this, 'load_woordle_settings_page' ]
+		);
+	}
+
+	public function load_woordle_settings_page() {
+		include WOORDLE_BACKEND_PATH . '/templates/settings/woordle-settings-main.php';
 	}
 
 	/**

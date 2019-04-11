@@ -7,11 +7,26 @@ class Woordle
 {
 	private $loader;
 
+	static $instance;
+
+	private $woordle_options;
+
 	public function __construct() {
 		$this->loader = new Woordle_Loader();
+		$this->woordle_options = new Woordle_Options();
 		$this->init_ctp();
 		$this->load_vendors();
 		$this->load_resources();
+		$this->load_templates();
+	}
+
+	public static function get_instance() {
+
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new Woordle();
+		}
+
+		return self::$instance;
 	}
 
 	private function init_ctp() {
@@ -26,6 +41,19 @@ class Woordle
 
 	private function load_resources() {
 		$this->loader->load_admin_resources();
+		$this->loader->load_resources();
 	}
 
+	private function load_templates() {
+		$woordle_templates = new Woordle_Template();
+		$woordle_templates->init_templates();
+	}
+
+	public function woordle_options() {
+		return $this->woordle_options;
+	}
+
+	public function get_option_tabs() {
+		return $this->woordle_options->get_tabs();
+	}
 }

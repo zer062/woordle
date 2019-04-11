@@ -1,6 +1,6 @@
 {
     "key": "group_5ca616a562f95",
-    "title": "Course details",
+    "title": "Course Details",
     "fields": [
         {
             "key": "field_5ca616ac9e59e",
@@ -210,6 +210,25 @@
                     "first_day": 0
                 },
                 {
+                    "key": "field_5caf258fb271d",
+                    "label": "Enable class room",
+                    "name": "woordle_course_enable_class_room",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "Enabling classrooms, your students can select one classroom for enrol, or you can define a default classroom for enrolment",
+                    "default_value": 0,
+                    "ui": 1,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                },
+                {
                     "key": "field_5ca61b5dbf84a",
                     "label": "Migrate this course to Moodle?",
                     "name": "woordle_course_migrate_moodle",
@@ -229,11 +248,11 @@
                     "ui_off_text": ""
                 },
                 {
-                    "key": "field_5ca61c745a14c",
-                    "label": "Sales this course with woocommerce?",
+                    "key": "field_5cae570581001",
+                    "label": "Sale this course with Woocommerce",
                     "name": "woordle_sale_course_woocommerce",
                     "type": "true_false",
-                    "instructions": "Selecting this option, you will sale this course in Woocommerce",
+                    "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -246,6 +265,107 @@
                     "ui": 1,
                     "ui_on_text": "",
                     "ui_off_text": ""
+                }
+            ]
+        },
+        {
+            "key": "field_5caf2899b1e6e",
+            "label": "Classrooms",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5caf258fb271d",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5caf28aeb1e6f",
+            "label": "Classrooms settings",
+            "name": "woordle_course_classrooms_settings",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5caf258fb271d",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "row",
+            "sub_fields": [
+                {
+                    "key": "field_5caf28cab1e70",
+                    "label": "Use multiples classrooms?",
+                    "name": "woorlde_course_use_multiples_classrooms",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 1,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                },
+                {
+                    "key": "field_5caf28fcb1e71",
+                    "label": "Default classroom for enrolment",
+                    "name": "woordle_course_default_classroom_for_enrolment",
+                    "type": "relationship",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5caf28cab1e70",
+                                "operator": "!=",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "classrooms"
+                    ],
+                    "taxonomy": "",
+                    "filters": [
+                        "search"
+                    ],
+                    "elements": "",
+                    "min": 1,
+                    "max": 1,
+                    "return_format": "object"
                 }
             ]
         },
@@ -505,7 +625,15 @@
                     "type": "select",
                     "instructions": "Select Moodle course format",
                     "required": 1,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5ca61bf6eb504",
+                                "operator": "==",
+                                "value": "course"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -672,7 +800,7 @@
                     "label": "Use classes room?",
                     "name": "woordle_course_use_classes_room",
                     "type": "true_false",
-                    "instructions": "* If you will migrate this course like Moodle course category, classes rooms will migrated like courses. \\n\r\n* If you will migrate this course like Moodle course, classes rooms will migrated like separated groups.\r\n* Your students are setting up a classroom to sign up.",
+                    "instructions": "* If you will migrate this course like Moodle course category, classes rooms will migrated like courses.\r\n* If you will migrate this course like Moodle course, classes rooms will migrated like separated groups.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -685,6 +813,109 @@
                     "ui": 1,
                     "ui_on_text": "",
                     "ui_off_text": ""
+                }
+            ]
+        },
+        {
+            "key": "field_5cae52c26da20",
+            "label": "Woocommerce Settings",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5ca61c745a14c",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5cae52e76da21",
+            "label": "Woocommerce Settings",
+            "name": "woordle_woocommerce_settings",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "row",
+            "sub_fields": [
+                {
+                    "key": "field_5cae53056da22",
+                    "label": "Woocommerce product category",
+                    "name": "woordle_woocommerce_product_category",
+                    "type": "taxonomy",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "taxonomy": "product_cat",
+                    "field_type": "select",
+                    "allow_null": 0,
+                    "add_term": 1,
+                    "save_terms": 0,
+                    "load_terms": 0,
+                    "return_format": "object",
+                    "multiple": 0
+                },
+                {
+                    "key": "field_5cae535b6bb89",
+                    "label": "SKU",
+                    "name": "woordle_woocommerce_sku",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5cae537d6bb8a",
+                    "label": "Course Price",
+                    "name": "woordle_woocommerce_course_price",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "0,00",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": "",
+                    "max": "",
+                    "step": ""
                 }
             ]
         }
@@ -706,5 +937,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1554435807
+    "modified": 1554983639
 }

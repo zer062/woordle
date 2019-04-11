@@ -11,3 +11,33 @@ span.wo-column-icon {
     width: 100%;
     font-size: 30px;
 }
+
+table.woo-tables {
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+}
+
+table.woo-tables thead {
+    background-color: #efefef;
+}
+
+table.woo-tables thead tr th {
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+table.woo-tables tr td {
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+table.woo-tables tr td.td-label {
+    width: 250px;
+}
+
+#course_options {
+    padding: 10px 20px 10px;
+}
