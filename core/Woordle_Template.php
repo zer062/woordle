@@ -8,7 +8,8 @@ class Woordle_Template {
 
 	public function load_templates( $template ) {
 		global $post;
-		if ( is_single( 'courses' ) || $post->post_type == 'courses' ) {
+
+		if ( is_single( 'courses' ) || ( !is_null( $post ) && $post->post_type == 'courses' ) ) {
 
 			$template = WOORDLE_FRONTEND_PATH . '/templates/single-courses.php';
 

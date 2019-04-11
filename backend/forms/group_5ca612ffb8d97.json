@@ -1,6 +1,6 @@
 {
     "key": "group_5ca612ffb8d97",
-    "title": "Category course form",
+    "title": "Category Course",
     "fields": [
         {
             "key": "field_5ca61324ae9ca",
@@ -39,5 +39,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1554435628
+    "modified": 1554985535
 }

@@ -12,7 +12,7 @@ return [
 		'view_item'          => __( 'View Classroom', 'woordle' ),
 		'all_items'          => __( 'All Classrooms', 'woordle' ),
 		'search_items'       => __( 'Search Classrooms', 'woordle' ),
-		'parent_item_colon'  => __( 'Parent Classrooms:', 'woordle' ),
+		'parent_item_colon'  => __( 'Parent Course:', 'woordle' ),
 		'not_found'          => __( 'No classroom found.', 'woordle' ),
 		'not_found_in_trash' => __( 'No classroom found in Trash.', 'woordle' )
 	],
@@ -25,7 +25,7 @@ return [
 	'rewrite'            => array( 'slug' => 'classroom' ),
 	'capability_type'    => 'post',
 	'has_archive'        => true,
-	'hierarchical'       => false,
+	'hierarchical'       => true,
 	'menu_position'      => null,
-	'supports'           => [ 'comments' ]
+	'supports'           => [ 'title', 'comments' ]
 ];
