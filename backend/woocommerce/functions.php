@@ -5,7 +5,7 @@
  * @return bool
  */
 function woo_use_woocommerce() {
-	$use_woocommerce = get_option( 'sale_course_woocommerce' );
+	$use_woocommerce = get_option( 'woordle_sale_course_woocommerce' );
 
 	if ( !is_null( $use_woocommerce ) && $use_woocommerce == 1) {
 		return true;
@@ -72,7 +72,6 @@ function woo_course_custom_js() {
             jQuery( '#shipping_product_data' ).addClass( 'hide_if_course' ).hide();
             jQuery( '#general_product_data' ).show();
             jQuery( '.general_options' ).addClass( 'show_if_course' ).addClass( 'active').show();
-            console.log('teste');
         });
 	</script><?php
 }
