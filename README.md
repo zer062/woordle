@@ -6,7 +6,7 @@ Wordle is the best online school management system for WordPress.
 * 0.3.0
     * Created classroom Post type
     * Created classroom form
-
+    
 * 0.2.2
     * Allow user define if sale course with Woocommerce
     * Integrate Course with Woocommerce
