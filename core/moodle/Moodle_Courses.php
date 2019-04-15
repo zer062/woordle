@@ -14,6 +14,7 @@ class Moodle_Course extends Woordle_Moodle {
 	 * @throws Exception
 	 */
 	public function get_course( $id ) {
+
 		$response = $this->request( 'core_course_get_courses_by_field' )
 		                 ->params( [ 'field' => 'idnumber', 'value' => $id ] )
 		                 ->get();
