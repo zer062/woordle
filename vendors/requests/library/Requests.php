@@ -18,7 +18,7 @@
  *
  * @package Requests
  */
-class Requests {
+class Woordle_Requests {
 	/**
 	 * POST method
 	 *
@@ -533,8 +533,8 @@ class Requests {
 	 * @return string Default certificate path.
 	 */
 	public static function get_certificate_path() {
-		if ( ! empty( Requests::$certificate_path ) ) {
-			return Requests::$certificate_path;
+		if ( ! empty( Woordle_Requests::$certificate_path ) ) {
+			return Woordle_Requests::$certificate_path;
 		}
 
 		return dirname(__FILE__) . '/Requests/Transport/cacert.pem';
@@ -546,7 +546,7 @@ class Requests {
 	 * @param string $path Certificate path, pointing to a PEM file.
 	 */
 	public static function set_certificate_path( $path ) {
-		Requests::$certificate_path = $path;
+		Woordle_Requests::$certificate_path = $path;
 	}
 
 	/**

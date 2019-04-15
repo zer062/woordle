@@ -37,12 +37,12 @@ class Woordle_Options {
 			WOORDLE_BACKEND_PATH . '/templates/settings/woordle-general-settings.php'
 		);
 
-		$this->setTab(
-			'woordle_woocommerce_settings',
-			__( 'Woocommerce Settings', 'woordle' ),
-			WOORDLE_BACKEND_PATH . '/templates/settings/woordle-woocommerce-settings.php',
-			( woo_use_woocommerce() && woo_has_woocommerce() )
-		);
+//		$this->setTab(
+//			'woordle_woocommerce_settings',
+//			__( 'Woocommerce Settings', 'woordle' ),
+//			WOORDLE_BACKEND_PATH . '/templates/settings/woordle-woocommerce-settings.php',
+//			( woo_use_woocommerce() && woo_has_woocommerce() )
+//		);
 
 		$this->setTab(
 			'woordle_moodle_settings',

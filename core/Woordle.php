@@ -37,6 +37,7 @@ class Woordle
 	private function load_vendors() {
 		$vendors = new Woordle_Vendors();
 		$vendors->load_acf();
+		$vendors->load_request();
 	}
 
 	private function load_resources() {

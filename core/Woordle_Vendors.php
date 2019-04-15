@@ -55,4 +55,11 @@ class Woordle_Vendors {
 		$paths[] = WOORDLE_BACKEND_PATH . '/forms';
 		return $paths;
 	}
+
+	/**
+	 * Load Request library
+	 */
+	function load_request() {
+		include_once( WOORDLE_VENDORS_PATH . '/requests/library/Requests.php' );
+	}
 }

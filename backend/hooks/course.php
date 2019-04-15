@@ -1,7 +1,7 @@
 <?php
 
 function woo_save_course( $course_id ) {
-
+	
 	if( isset( $_POST['post_type'] ) && $_POST['post_type'] != 'courses' ) {
 		return;
 	}

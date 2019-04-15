@@ -2,7 +2,7 @@
 $sale_course_woocommerce = get_option( 'woordle_sale_course_woocommerce' );
 ?>
 
-<h2>Woordle Gerenal settings</h2>
+<h2>Woordle General settings</h2>
 
 <table class="form-table">
 	<tr valign="top">
