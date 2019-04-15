@@ -20,6 +20,7 @@ $woordle_files = [
 	WOORDLE_CORE_PATH . '/Woordle_Http.php',
 	WOORDLE_CORE_PATH . '/Woordle_Response.php',
 	WOORDLE_CORE_PATH . '/Woordle_Moodle.php',
+	WOORDLE_CORE_PATH . '/moodle/Moodle_Category.php',
 	WOORDLE_CORE_PATH . '/moodle/Moodle_Courses.php',
 	WOORDLE_CORE_PATH . '/functions.php',
 	WOORDLE_BACKEND_PATH . '/woocommerce/functions.php',
