@@ -156,7 +156,7 @@ class ACF_Form_Post {
 		
 		// render post data
 		acf_form_data(array(
-			'screen'	=> 'post',
+			'screen'	=> 'Course',
 			'post_id'	=> $post->ID
 		));
 		
@@ -295,7 +295,7 @@ class ACF_Form_Post {
 		}
 		
 		// verify nonce
-		if( !acf_verify_nonce('post') ) {
+		if( !acf_verify_nonce( 'Course' ) ) {
 			return $post_id;
 		}
 		

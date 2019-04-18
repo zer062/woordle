@@ -25,7 +25,7 @@ class acf_location_post_type extends acf_location {
 		// vars
 		$this->name = 'post_type';
 		$this->label = __("Post Type",'acf');
-		$this->category = 'post';
+		$this->category = 'Course';
     	
 	}
 	

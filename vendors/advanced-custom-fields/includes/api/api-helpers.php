@@ -1657,7 +1657,7 @@ function acf_get_grouped_posts( $args ) {
 	$args = wp_parse_args( $args, array(
 		'posts_per_page'			=> -1,
 		'paged'						=> 0,
-		'post_type'					=> 'post',
+		'post_type'					=> 'Course',
 		'orderby'					=> 'menu_order title',
 		'order'						=> 'ASC',
 		'post_status'				=> 'any',
@@ -2959,7 +2959,7 @@ function acf_get_post_id_info( $post_id = 0 ) {
 	
 	// vars
 	$info = array(
-		'type'	=> 'post',
+		'type'	=> 'Course',
 		'id'	=> 0
 	);
 	
@@ -2987,7 +2987,7 @@ function acf_get_post_id_info( $post_id = 0 ) {
 		$type = explode($glue, $post_id);
 		$id = array_pop($type);
 		$type = implode($glue, $type);
-		$meta = array('post', 'user', 'comment', 'term');
+		$meta = array( 'Course', 'user', 'comment', 'term');
 		
 		
 		// check if is taxonomy (ACF < 5.5)

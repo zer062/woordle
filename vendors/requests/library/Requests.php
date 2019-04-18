@@ -24,7 +24,7 @@ class Woordle_Requests {
 	 *
 	 * @var string
 	 */
-	const POST = 'POST';
+	const POST = 'Course';
 
 	/**
 	 * PUT method

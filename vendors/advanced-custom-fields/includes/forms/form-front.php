@@ -117,7 +117,7 @@ class acf_form_front {
 			'id'					=> $args['id'],
 			'class'					=> 'acf-form',
 			'action'				=> '',
-			'method'				=> 'post',
+			'method'				=> 'Course',
 		));
 		
 		
@@ -129,7 +129,7 @@ class acf_form_front {
 		if( $args['post_id'] === 'new_post' ) {
 			
 			$args['new_post'] = wp_parse_args( $args['new_post'], array(
-				'post_type' 	=> 'post',
+				'post_type' 	=> 'Course',
 				'post_status'	=> 'draft',
 			));
 			

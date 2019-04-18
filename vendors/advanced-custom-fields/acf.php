@@ -373,7 +373,7 @@ class ACF {
 			'public'			=> false,
 			'show_ui'			=> true,
 			'_builtin'			=> false,
-			'capability_type'	=> 'post',
+			'capability_type'	=> 'Course',
 			'capabilities'		=> array(
 				'edit_post'			=> $cap,
 				'delete_post'		=> $cap,
@@ -405,7 +405,7 @@ class ACF {
 			'public'			=> false,
 			'show_ui'			=> false,
 			'_builtin'			=> false,
-			'capability_type'	=> 'post',
+			'capability_type'	=> 'Course',
 			'capabilities'		=> array(
 				'edit_post'			=> $cap,
 				'delete_post'		=> $cap,

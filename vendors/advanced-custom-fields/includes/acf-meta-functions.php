@@ -15,7 +15,7 @@ function acf_decode_post_id( $post_id = 0 ) {
 	
 	// Default data
 	$data = array(
-		'type'	=> 'post',
+		'type'	=> 'Course',
 		'id'	=> $post_id
 	);
 	

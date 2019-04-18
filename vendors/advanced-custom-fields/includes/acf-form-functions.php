@@ -51,7 +51,7 @@ function acf_form_data( $data = array() ) {
 	$data = wp_parse_args($data, array(
 		
 		/** @type string The current screen (post, user, taxonomy, etc). */
-		'screen' => 'post',
+		'screen' => 'Course',
 		
 		/** @type int|string The ID of current post being edited. */
 		'post_id' => 0,

@@ -46,7 +46,7 @@ class acf_location_page extends acf_location {
 	
 	function rule_match( $result, $rule, $screen ) {
 		
-		return acf_get_location_rule('post')->rule_match( $result, $rule, $screen );
+		return acf_get_location_rule( 'Course' )->rule_match( $result, $rule, $screen );
 		
 	}
 	

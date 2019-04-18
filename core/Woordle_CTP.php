@@ -19,13 +19,16 @@ class Woordle_CTP {
 	public function register_posts() {
 
 		$post_types = $this->scan_ctp();
-
-		foreach ( $post_types as $post ) {
-			$post_type_name = str_replace('.php', '', $post );
-			$post_type_file = WOORDLE_MODELS_PATH . "/{$post}";
-			$post_type_args = require_once ( $post_type_file );
-			register_post_type( $post_type_name, $post_type_args );
+		if  ( count ( $post_types ) > 0 ) {
+			foreach ( $post_types as $post ) {
+				$post_type_name = str_replace('.php', '', $post );
+				$post_type_file = WOORDLE_MODELS_PATH . "/{$post}";
+				require_once ( $post_type_file );
+				$model = new $post_type_name();
+				$model->register_model_post_type();
+			}
 		}
+
 	}
 
 	public function scan_taxomonies() {

@@ -54,7 +54,7 @@ function acf_get_taxonomies( $args = array() ) {
 *  @param	string|array $post_types The post types to compare against.
 *  @return	array
 */
-function acf_get_taxonomies_for_post_type( $post_types = 'post' ) {
+function acf_get_taxonomies_for_post_type( $post_types = 'Course' ) {
 	
 	// vars
 	$taxonomies = array();

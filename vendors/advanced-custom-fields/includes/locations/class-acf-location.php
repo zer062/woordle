@@ -16,7 +16,7 @@ class acf_location {
 	
 	
 	/** @var string Rule category */
-	var $category = 'post';
+	var $category = 'Course';
 	
 	
 	/** @var bool Rule availability */

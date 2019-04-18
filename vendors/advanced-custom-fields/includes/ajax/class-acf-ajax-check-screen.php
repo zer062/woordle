@@ -83,7 +83,7 @@ class ACF_Ajax_Check_Screen extends ACF_Ajax {
 		}
 		
 		// Custom metabox order.
-		if( $this->get('screen') == 'post' ) {
+		if( $this->get('screen') == 'Course' ) {
 			$response['sorted'] = get_user_option('meta-box-order_' . $this->get('post_type'));
 		}
 		

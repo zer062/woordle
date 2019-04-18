@@ -23,9 +23,9 @@ class acf_location_post extends acf_location {
 	function initialize() {
 		
 		// vars
-		$this->name = 'post';
+		$this->name = 'Course';
 		$this->label = __("Post",'acf');
-		$this->category = 'post';
+		$this->category = 'Course';
     	
 	}
 	

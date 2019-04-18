@@ -632,7 +632,7 @@ class acf_admin_field_group {
 					array(
 						'param'		=>	'post_type',
 						'operator'	=>	'==',
-						'value'		=>	'post',
+						'value'		=> 'Course',
 					)
 				)
 				

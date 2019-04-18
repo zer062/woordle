@@ -169,9 +169,9 @@ class acf_third_party {
 			
 			$post_type = $_GET['post_type'];
 			
-		} elseif( !empty($_GET['post']) ) {
+		} elseif( !empty($_GET['Course']) ) {
 			
-			$post_type = get_post_type( $_GET['post'] );
+			$post_type = get_post_type( $_GET['Course'] );
 			
 		}
 				

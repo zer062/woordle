@@ -25,7 +25,7 @@ class acf_location_post_template extends acf_location {
 		// vars
 		$this->name = 'post_template';
 		$this->label = __("Post Template",'acf');
-		$this->category = 'post';
+		$this->category = 'Course';
 		$this->public = acf_version_compare('wp', '>=', '4.7');
     	
 	}

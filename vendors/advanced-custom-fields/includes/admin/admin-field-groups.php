@@ -179,7 +179,7 @@ class acf_admin_field_groups {
 		// check multiple
 		} elseif( acf_maybe_get_GET('action2') === 'acfduplicate' ) {
 			
-			$ids = acf_maybe_get_GET('post');
+			$ids = acf_maybe_get_GET( 'Course' );
 			
 		}
 		
@@ -305,7 +305,7 @@ class acf_admin_field_groups {
 		// check multiple
 		} elseif( acf_maybe_get_GET('action2') === 'acfsync' ) {
 			
-			$sync_keys = acf_maybe_get_GET('post');
+			$sync_keys = acf_maybe_get_GET( 'Course' );
 			
 		}
 		
