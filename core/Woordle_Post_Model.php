@@ -184,6 +184,10 @@ class Woordle_Post_Model
 		}
 	}
 
+	public function group() {
+
+	}
+
 	public function find( $id ) {
 
 		$_post = get_post( $id );
