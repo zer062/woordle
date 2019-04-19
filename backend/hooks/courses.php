@@ -1,17 +1,16 @@
 <?php
 
 function woo_save_course( $course_id ) {
-
 	if( isset( $_POST['post_type'] ) && $_POST['post_type'] != 'courses' ) {
 		return;
 	}
 
 	$sync_woocommerce_product = get_field(
-		'woordle_course_information_woordle_sale_course_woocommerce',
+		'woordle_woocommerce_settings_woordle_sale_course_woocommerce',
 		$course_id
 	);
 
-	if ( woo_has_woocommerce() && woo_use_woocommerce() && $sync_woocommerce_product == 1) {
+	if ( woo_has_woocommerce() && $sync_woocommerce_product ) {
 		$course = get_post( $course_id );
 		woo_sync_course_product( $course );
 	}

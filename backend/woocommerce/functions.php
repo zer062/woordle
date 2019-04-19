@@ -1,19 +1,6 @@
 <?php
 
 /**
- * Check if Woordle will use Woocommerce
- * @return bool
- */
-function woo_use_woocommerce() {
-	$use_woocommerce = get_option( 'woordle_sale_course_woocommerce' );
-
-	if ( !is_null( $use_woocommerce ) && $use_woocommerce == 1) {
-		return true;
-	}
-	return false;
-}
-
-/**
  * Check if Woocommerce is actived
  * @return bool
  */
@@ -46,7 +33,7 @@ function woo_course_product_class( $classname, $product_type ) {
 
 add_filter( 'woocommerce_product_class', 'woo_course_product_class', 10, 2 );
 
-if ( woo_has_woocommerce() && woo_use_woocommerce() ) {
+if ( woo_has_woocommerce() ) {
 	add_action( 'init', 'woo_register_course_product_type' );
 }
 
@@ -56,7 +43,7 @@ function woo_add_course_product( $types ){
 	return $types;
 }
 
-if ( woo_has_woocommerce() && woo_use_woocommerce() ) {
+if ( woo_has_woocommerce() ) {
 	add_filter( 'product_type_selector', 'woo_add_course_product' );
 }
 
@@ -76,7 +63,7 @@ function woo_course_custom_js() {
 	</script><?php
 }
 
-if ( woo_has_woocommerce() && woo_use_woocommerce() ) {
+if ( woo_has_woocommerce() ) {
 	add_action( 'admin_footer', 'woo_course_custom_js' );
 }
 
@@ -89,7 +76,7 @@ function woo_course_product_tabs( $tabs) {
 	return $tabs;
 }
 
-if ( woo_has_woocommerce() && woo_use_woocommerce() ) {
+if ( woo_has_woocommerce() ) {
 	add_filter( 'woocommerce_product_data_tabs', 'woo_course_product_tabs' );
 }
 /**
@@ -100,7 +87,7 @@ function woo_course_options_product_tab_content() {
 	include WOORDLE_BACKEND_PATH . '/templates/woocommerce/woordle-course-product-tab.php';
 }
 
-if ( woo_has_woocommerce() && woo_use_woocommerce() ) {
+if ( woo_has_woocommerce() ) {
 	add_action( 'woocommerce_product_data_panels', 'woo_course_options_product_tab_content' );
 }
       /**
@@ -123,6 +110,6 @@ function woo_hide_course_attributes_data_panel( $tabs ) {
 	return $tabs;
 }
 
-if ( woo_has_woocommerce() && woo_use_woocommerce() ) {
+if ( woo_has_woocommerce() ) {
 	add_filter( 'woocommerce_product_data_tabs', 'woo_hide_course_attributes_data_panel' );
 }

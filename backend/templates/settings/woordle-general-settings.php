@@ -1,22 +1,22 @@
 <?php
-$sale_course_woocommerce = get_option( 'woordle_sale_course_woocommerce' );
+$woordle_moodle_url = get_option( 'woordle_moodle_url' );
+$woordle_moodle_token = get_option( 'woordle_moodle_token' );
 ?>
 
 <h2>Woordle General settings</h2>
 
 <table class="form-table">
-	<tr valign="top">
-		<th scope="row"><?php _e( 'Sales courses with Woocommerce?', 'woordle' );?></th>
-		<td>
+    <tr valign="top">
+        <th scope="row"><?php _e( 'Moodle URL', 'woordle' );?></th>
+        <td>
+            <input type="text" name="woordle_moodle_url" size="60" value="<?php echo esc_attr( $woordle_moodle_url ); ?>" />
+        </td>
+    </tr>
 
-            <?php if ( woo_has_woocommerce() ) : ?>
-			<input type="checkbox" name="woordle_sale_course_woocommerce" value="1" <?php echo ( !is_null( $sale_course_woocommerce ) && $sale_course_woocommerce ==  "1" ) ? 'checked' : '' ;?> >
-            <p>
-                <?php _e( 'When defined true, all courses selected to sale with Woocommerce, will use checkout process to enrol.', 'woordle' )?>
-            </p>
-            <?php else: ?>
-            <?php _e( 'Require Woocommerce installed and actived', 'woordle' );?>
-            <?php endif; ?>
-		</td>
-	</tr>
+    <tr valign="top">
+        <th scope="row"><?php _e( 'Moodle Webservice token', 'woordle' );?></th>
+        <td>
+            <input type="text" name="woordle_moodle_token" size="60" value="<?php echo esc_attr( $woordle_moodle_token ); ?>" />
+        </td>
+    </tr>
 </table>
