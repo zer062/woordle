@@ -1,4 +1,9 @@
 <?php
+function rewrite_rules () {
+	flush_rewrite_rules();
+}
+
+register_activation_hook( __FILE__, 'rewrite_rules' );
 
 function woo_load_template_part( $slug, $name = '' ) {
 	$template = '';
@@ -31,11 +36,6 @@ function has_course_background_image() {
 	global $post;
 	$background_image = get_field( 'woordle_course_promotional_woordle_course_background_image', $post->ID );
 	return $background_image != false;
-}
-
-function course_background() {
-	global $post;
-	return get_field( 'woordle_course_promotional_woordle_course_background_image', $post->ID );
 }
 
 function course_times() {

@@ -27,4 +27,8 @@ class Woordle_Loader {
 		$options = new Woordle_Options();
 		return $options;
 	}
+
+	public function flush_rules() {
+		flush_rewrite_rules();
+	}
 }
