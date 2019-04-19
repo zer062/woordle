@@ -1,4 +1,6 @@
 <?php
+
+
 return [
 	'labels' => [
 		'name'               => _x( 'Courses', 'post type general name', 'woordle' ),
