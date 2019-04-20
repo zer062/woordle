@@ -1,4 +1,45 @@
 <?php
+function woo_courses_columns( $columns ) {
+	unset( $columns['date'] );
+	unset( $columns['comments'] );
+	$columns['woordle_course_woocommerce_product'] = __( 'Woocommerce Product', 'woordle' );
+	$columns['woordle_course_moodle_id'] = __( 'Moodle Course ID', 'woordle' );
+	$columns['woordle_course_instructor'] = __( 'Intructor', 'woordle' );
+	$columns['date'] = __( 'Date' );
+	return $columns;
+}
+
+add_filter( 'manage_courses_posts_columns', 'woo_courses_columns' );
+
+function manage_courses_column( $column, $post_id ) {
+	switch ( $column ) {
+
+		case 'woordle_course_woocommerce_product' :
+			$product = get_children( [ 'post_parent' => $post_id, 'post_type' => 'product' ] );
+//			var_dump( reset( $product ) ); die;
+			if ( !empty( $product ) ) {
+				echo '<a href="' . get_admin_url() . '/post.php?post=' . reset( $product )->ID . '&action=edit">#' . reset( $product )->ID . '</a>';
+			} else {
+				_e( 'This course is not sold by Woocommerce', 'woordle' );
+			}
+			break;
+
+		case 'woordle_course_moodle_id' :
+			_e( 'Not migrated to Moodle', 'woordle' );
+			break;
+
+		case 'woordle_course_instructor' :
+			$instructor = get_field( 'woordle_course_information_woordle_course_instructor',  $post_id );
+
+			if ( !is_null( $instructor ) ) {
+				echo '<a href="' . get_admin_url() . '/user-edit.php?user_id=' . $instructor->data->ID . '&wp_http_referer=%2Fwp-admin%2Fusers.php%3Fupdate%3Dadd%26id%3D2">' . $instructor->data->display_name . '</a>';
+			}
+
+			break;
+	}
+}
+
+add_action( 'manage_courses_posts_custom_column' , 'manage_courses_column', 10, 2 );
 
 function woo_save_course( $course_id ) {
 	if( isset( $_POST['post_type'] ) && $_POST['post_type'] != 'courses' ) {

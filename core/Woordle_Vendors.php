@@ -8,7 +8,7 @@ class Woordle_Vendors {
 		add_filter( 'acf/settings/dir', [ $this, 'acf_woordle_settings_dir' ] );
 		add_filter( 'acf/settings/save_json', [ $this, 'acf_woordle_forms_save_path' ] );
 		add_filter( 'acf/settings/load_json', [ $this, 'acf_woordle_forms_load_path' ] );
-		add_filter('acf/settings/show_admin', '__return_false');
+//		add_filter('acf/settings/show_admin', '__return_false');
 	}
 
 	/**
