@@ -129,51 +129,6 @@
                     "min": "",
                     "max": "",
                     "step": ".5"
-                },
-                {
-                    "key": "field_5ca6677b1ee55",
-                    "label": "Display instructor info",
-                    "name": "woordle_course_display_instructor_info",
-                    "type": "true_false",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "message": "",
-                    "default_value": 0,
-                    "ui": 1,
-                    "ui_on_text": "",
-                    "ui_off_text": ""
-                },
-                {
-                    "key": "field_5ca667be1ee56",
-                    "label": "Select an instructor",
-                    "name": "woordle_course_instructor",
-                    "type": "user",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_5ca6677b1ee55",
-                                "operator": "==",
-                                "value": "1"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "role": "",
-                    "allow_null": 0,
-                    "multiple": 0,
-                    "return_format": "object"
                 }
             ]
         },
@@ -630,5 +585,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1555652974
+    "modified": 1555764712
 }
