@@ -251,6 +251,36 @@
                     "ui_off_text": ""
                 },
                 {
+                    "key": "field_5cbd301645c4b",
+                    "label": "Course Category",
+                    "name": "woordle_moodle_course_category",
+                    "type": "taxonomy",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5cb95fa9bdabd",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "taxonomy": "category_course",
+                    "field_type": "select",
+                    "allow_null": 0,
+                    "add_term": 0,
+                    "save_terms": 0,
+                    "load_terms": 0,
+                    "return_format": "object",
+                    "multiple": 0
+                },
+                {
                     "key": "field_5ca622c4f115f",
                     "label": "Course format",
                     "name": "woordle_course_format",
@@ -585,5 +615,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1555764712
+    "modified": 1555903059
 }
