@@ -42,9 +42,11 @@ class Moodle_Category extends Woordle_Moodle {
 
 		$category = [
 			'categories' => [
-				'name' => $name,
-				'idnumber' => $course_category_id,
-				'description' => $description
+				[
+					'name' => $name,
+					'idnumber' => $course_category_id,
+					'description' => $description
+				]
 			]
 		];
 
@@ -67,30 +69,22 @@ class Moodle_Category extends Woordle_Moodle {
 			->get();
 
 		if ( isset( $response->body->exception ) ) {
-			throw new Exception( $response->body->exception, $response->body->exception );
+			throw new Exception( $response->body->message );
 		}
 
 		return $response->body[0];
 	}
 
 	public function update_moodle_category( $category_id, $name, $course_category_id, $parent = null, $description = null ) {
-		$_moodle_category = $this->get_category( $category_id );
-
-		if ( is_null( $_moodle_category ) ) {
-			return $this->create_moodle_category(
-				$name,
-				$course_category_id,
-				$parent,
-				$description
-			);
-		}
 
 		$category = [
 			'categories' => [
-				'id' => $_moodle_category,
-				'name' => $name,
-				'idnumber' => $course_category_id,
-				'description' => $description
+				[
+					'id' => $category_id,
+					'name' => $name,
+					'idnumber' => $course_category_id,
+					'description' => $description
+				]
 			]
 		];
 
@@ -113,7 +107,7 @@ class Moodle_Category extends Woordle_Moodle {
 			->get();
 
 		if ( isset( $response->body->exception ) ) {
-			throw new Exception( $response->body->exception, $response->body->exception );
+			throw new Exception( $response->body->message );
 		}
 
 		return $response->body[0];

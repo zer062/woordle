@@ -25,12 +25,12 @@ class Woordle_Category_Course {
 	public function category_course_moodle_migrated_column( $empty = '',  $column, $term_id ) {
 		switch ($column) {
 			case 'moodle_migrated':
-				$category_migrated = get_field( '_category_moodle_id', 'category_moodle_' . $term_id );
+				$category_migrated = get_field( '_woordle_moodle_category_id', 'category_course_' . $term_id );
 
 				if ( is_null( $category_migrated ) ) {
 					echo '<span class="dashicons dashicons-dismiss wo-danger wo-column-icon" title="' . __( 'This category has not be migrated to Moodle yet', 'woordle' ) . '"></span>';
 				} else {
-					echo '<span class="dashicons dashicons-yes wo-success wo-column-icon" title="' . __( 'This category has be migrated to Moodle', 'woordle' ) . '></span>';
+					echo '<span class="dashicons dashicons-yes wo-success wo-column-icon" title="' . __( 'This category has be migrated to Moodle', 'woordle' ) . '"></span>';
 				}
 				break;
 		}
