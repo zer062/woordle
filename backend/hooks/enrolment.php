@@ -121,3 +121,27 @@ function woo_auto_publish_enrolment( $order_id, $old_status, $new_status, $order
 };
 
 add_action( 'woocommerce_order_status_changed', 'woo_auto_publish_enrolment', 10, 4 );
+
+function woo_enrolment_columns( $columns ) {
+	unset( $columns['comments'] );
+	unset( $columns['date'] );
+	$columns['woordle_enrolment_student'] = __( 'Student', 'woordle' );
+	$columns['date'] = __( 'Date' );
+	return $columns;
+}
+
+add_filter( 'manage_enrolment_posts_columns', 'woo_enrolment_columns' );
+
+function manage_enrolment_column( $column, $post_id ) {
+	switch ( $column ) {
+
+		case 'woordle_enrolment_student' :
+		    $enrol = get_post ( $post_id );
+		    $student = get_user_by( 'ID', $enrol->post_author );
+
+		    echo $student->display_name;
+			break;
+	}
+}
+
+add_action( 'manage_enrolment_posts_custom_column' , 'manage_enrolment_column', 10, 2 );

@@ -29,5 +29,5 @@ return [
 	'has_archive'        => true,
 	'hierarchical'       => true,
 	'menu_position'      => null,
-	'supports'           => [ 'comments' ]
+	'supports'           => [ 'revisions' ]
 ];
