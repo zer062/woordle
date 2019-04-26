@@ -28,6 +28,8 @@ $woordle_files = [
 	WOORDLE_CORE_PATH . '/moodle/Moodle_User.php',
 	WOORDLE_CORE_PATH . '/moodle/Moodle_Enrolment.php',
 	WOORDLE_CORE_PATH . '/functions.php',
+	WOORDLE_FRONTEND_PATH . '/functions/shortcodes.php',
+	WOORDLE_FRONTEND_PATH . '/functions/woocommerce.php',
 	WOORDLE_BACKEND_PATH . '/woocommerce/functions.php',
 ];
 
