@@ -10,12 +10,13 @@ function woo_enrol_user_course() {
 
 		$course_id = $_POST['_woo_enrol_course'];
 		$sale_woocommerce = get_field( 'woordle_woocommerce_settings_woordle_sale_course_woocommerce', $course_id );
-		$course_product = get_posts([
-			'post_type' => 'product',
-			'post_parent' => $course_id
-		]);
 
-		if ( $sale_woocommerce ) {
+		if ( $sale_woocommerce && woo_has_woocommerce() ) {
+
+		    $course_product = get_posts([
+				'post_type' => 'product',
+				'post_parent' => $course_id
+			]);
 
 			if ( !empty( $course_product ) ) {
 				$product = new WC_Product( $course_product[0]->ID );
@@ -64,12 +65,34 @@ add_action( 'woocommerce_checkout_order_processed', 'woo_create_enrol_after_new_
 
 function woo_course_enrol_button() {
 	global $post;
+	$sale_course = get_field( 'woordle_woocommerce_settings_woordle_sale_course_woocommerce' );
+
+	if ( $sale_course ) {
+		$product = new WC_Product();
+	    $product_id = new WP_Query([
+	        'post_type' => 'product',
+            'post_parent' => $post->ID
+        ]);
+
+		if ( !is_null( $product_id->post ) ) {
+			$product = new WC_Product( $product_id->post->ID );
+        }
+
+    }
 ?>
-	<form method="post">
-		<input type="hidden" name="_woo_enrol_course" value="<?php the_ID();?>">
-		<?php wp_nonce_field('_woo_action_enrol_' . get_the_ID(), '_woo_enrol_token', true, true); ?>
-		<button type="submit"><?php _e( 'Enrol this course');?></button>
-	</form>
+    <div class="woo-enrol-action">
+        <?php if ( woo_has_woocommerce() && get_field( 'woordle_woocommerce_settings_woordle_sale_course_woocommerce', $post->ID) ) :?>
+        <div class="woo-course-price">
+            <?php echo $product->get_price_html(); ?>
+        </div>
+        <?php endif;?>
+        <form method="post">
+            <input type="hidden" name="_woo_enrol_course" value="<?php the_ID();?>">
+		    <?php wp_nonce_field('_woo_action_enrol_' . get_the_ID(), '_woo_enrol_token', true, true); ?>
+            <button type="submit" class="woo-btn"><?php _e( 'Enrol this course');?></button>
+        </form>
+    </div>
+
 <?php
 }
 

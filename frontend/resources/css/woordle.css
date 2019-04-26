@@ -78,3 +78,15 @@
     background-color: #f8d7da;
     border-color: #f5c6cb;
 }
+
+.woo-enrol-action {
+    margin: 20px 0;
+}
+
+.woo-course-price {
+    padding: 10px 0;
+}
+
+button.woo-btn {
+    width: 100%;
+}

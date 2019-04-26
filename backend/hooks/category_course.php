@@ -2,7 +2,7 @@
 
 function woo_sync_category_course_moodle( $category_id ) {
 
-	if ( !isset( $_POST['taxonomy'] ) && $_POST['taxonomy'] != 'category_course' ) {
+	if ( !isset( $_POST['taxonomy'] ) || $_POST['taxonomy'] != 'category_course' ) {
 		return;
 	}
 

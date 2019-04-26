@@ -1,7 +1,10 @@
 <?php
 
 function iconic_account_menu_items( $items ) {
+	$_temp_logout = $items['customer-logout'];
+	unset($items['customer-logout']);
 	$items['courses'] = __( 'My Courses', 'woordle' );
+	$items['customer-logout'] = $_temp_logout;
 	return $items;
 }
 
