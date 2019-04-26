@@ -10,7 +10,7 @@
         <div class="woo-course-main-content">
 
             <div class="woo-course-the-content">
-
+                <?php do_action( 'woo_alerts' );?>
                 <?php if ( has_course_will_learn() ) : ?>
                     <div class="woo-course-will-learn">
                         <h3><?php _e( 'You will learn', 'woordle' );?></h3>
@@ -41,9 +41,7 @@
 
         <div class="woo-course-sidebar">
             <div class="woo-course-sidebar-content">
-                <a href="#" class="btn btn-primary btn-block btn-enrolment">
-		            <?php _e( 'Enrol this course');?>
-                </a>
+                <?php do_action ( 'woo_enrol_course_html');?>
 	            <?php if( has_promotional_video() ): ?>
 		            <?php promotional_video(); ?>
 	            <?php endif; ?>
