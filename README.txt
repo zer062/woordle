@@ -49,6 +49,11 @@ No, but without Woocommerce, you will not be able to apply any type of charges i
 
 You should set up a webservice. You can see our documentation [here](https://zero62.com/woordle/docs)
 
+= What functions should I enable in the Moodle webservice?students? =
+
+You should enable the functions below:
+
+`core_course_create_categories`, `core_course_create_courses`, `core_course_get_categories`, `core_course_get_courses`, `core_course_get_courses_by_field`, `core_course_update_categories`, `core_course_update_courses`, `core_user_create_users`, `core_user_get_users`, `enrol_manual_enrol_users`
 
 == Screenshots ==
 
