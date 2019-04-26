@@ -22,6 +22,10 @@ function woo_register_course_product_type() {
 	}
 }
 
+if ( woo_has_woocommerce() ) {
+	add_action( 'plugins_loaded', 'woo_register_course_product_type' );
+}
+
 function woo_course_product_class( $classname, $product_type ) {
 
 	if ( $product_type == 'course' ) { // notice the checking here.
@@ -31,11 +35,11 @@ function woo_course_product_class( $classname, $product_type ) {
 	return $classname;
 }
 
-add_filter( 'woocommerce_product_class', 'woo_course_product_class', 10, 2 );
-
 if ( woo_has_woocommerce() ) {
-	add_action( 'init', 'woo_register_course_product_type' );
+	add_filter( 'woocommerce_product_class', 'woo_course_product_class', 10, 2 );
 }
+
+
 
 function woo_add_course_product( $types ){
 	// Key should be exactly the same as in the class
@@ -93,15 +97,15 @@ if ( woo_has_woocommerce() ) {
       /**
        * Save the custom fields.
        */
-//      function save_rental_option_field( $post_id ) {
-//	      $rental_option = isset( $_POST['_enable_course_option'] ) ? 'yes' : 'no';
-//	      update_post_meta( $post_id, '_enable_course_option', $rental_option );
-//	      if ( isset( $_POST['_text_input_y'] ) ) :
-//		      update_post_meta( $post_id, '_text_input_y', sanitize_text_field( $_POST['_text_input_y'] ) );
-//	      endif;
-//      }
-//      add_action( 'woocommerce_process_product_meta_course', 'save_rental_option_field'  );
-//      add_action( 'woocommerce_process_product_meta_variable_course', 'save_rental_option_field'  );
+      function save_rental_option_field( $post_id ) {
+	      $rental_option = isset( $_POST['_enable_course_option'] ) ? 'yes' : 'no';
+	      update_post_meta( $post_id, '_enable_course_option', $rental_option );
+	      if ( isset( $_POST['_text_input_y'] ) ) :
+		      update_post_meta( $post_id, '_text_input_y', sanitize_text_field( $_POST['_text_input_y'] ) );
+	      endif;
+      }
+      add_action( 'woocommerce_process_product_meta_course', 'save_rental_option_field'  );
+      add_action( 'woocommerce_process_product_meta_variable_course', 'save_rental_option_field'  );
       /**
        * Hide Attributes data panel.
        */

@@ -22,7 +22,6 @@ function woo_enrol_user_course() {
 				add_action( 'wp', function() use($product, $course_id) {
 					WC()->cart->add_to_cart( $product->get_id(), 1 );
 					$url = get_permalink( get_option( 'woocommerce_checkout_page_id' ) );
-					woo_enrol_course( $course_id );
 					wp_redirect( $url ); die;
 				});
 			} else {
@@ -40,19 +39,27 @@ function woo_enrol_course ( $course_id ) {
 		'post_type' => 'enrolment',
 		'post_title' => '#' . $course_id . $user->ID,
 		'post_status' => 'draft',
-		'post_parent' => $course_id
+		'post_parent' => $course_id,
+        'post_author' => $user->ID,
 	]);
-
-	update_field( 'enrol_woordle_enrolment_course', $course_id, $enrol_id );
-	update_field( 'enrol_woordle_enrolment_user', $user->ID, $enrol_id );
 	update_field( 'enrol_woordle_enrolment_role', 'student', $enrol_id );
 	return true;
 }
-
-
-add_action( 'woo_enrol_course_woocommerce', '' );
-
 add_action( 'init', 'woo_enrol_user_course' );
+
+function woo_create_enrol_after_new_order( $order_id ) {
+
+    $order = wc_get_order( $order_id );
+    foreach ( $order->get_items() as $order_product ) {
+        $product = wc_get_product( $order_product->get_data()['product_id'] );
+
+        if ( $product->get_type() === 'course' ) {
+            woo_enrol_course( $product->parent_id );
+        }
+    }
+}
+
+add_action( 'woocommerce_checkout_order_processed', 'woo_create_enrol_after_new_order',  1, 1  );
 
 function woo_course_enrol_button() {
 	global $post;
@@ -78,3 +85,39 @@ function woo_show_alerts () {
 
 add_action( 'woo_alerts', 'woo_show_alerts' );
 
+function woo_add_enrolment_metaboxes() {
+	add_meta_box(
+		'woordle_enrol_details',
+		__( 'Enrolment details', 'woordle' ),
+		'woo_load_enroment_settings',
+		'enrolment',
+		'normal',
+		'high'
+	);
+}
+
+add_action( 'add_meta_boxes', 'woo_add_enrolment_metaboxes' );
+
+function woo_load_enroment_settings () {
+	include ( WOORDLE_BACKEND_PATH . '/templates/enrolment/enrolment-details.php');
+}
+function woo_auto_publish_enrolment( $order_id, $old_status, $new_status, $order ) {
+
+    if ( $new_status === 'completed' ) {
+	    foreach ( $order->get_items() as $order_product ) {
+		    $product = wc_get_product( $order_product->get_data()['product_id'] );
+
+		    if ( $product->get_type() === 'course' ) {
+		        $enrol = new WP_Query([
+		            'post_type' => 'enrolment',
+                    'post_parent' => $product->get_data()['parent_id'],
+                    'post_author' => $order->get_data()['customer_id'],
+                    'post_status' => 'draft'
+                ]);
+		        wp_publish_post( $enrol->post );
+		    }
+	    }
+    }
+};
+
+add_action( 'woocommerce_order_status_changed', 'woo_auto_publish_enrolment', 10, 4 );
