@@ -8,7 +8,7 @@ Plugin Name: Woordle
 Plugin URI: https://zero62.com
 Description: Wordle is the best online school management system for WordPress
 Author: Zero62 Dev team
-Version: 1.0.5
+Version: 0.9.1
 Author URI: https://zero62.com
 Text Domain: woordle
 */
