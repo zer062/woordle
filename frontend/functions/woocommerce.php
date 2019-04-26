@@ -1,13 +1,17 @@
 <?php
 
 function iconic_account_menu_items( $items ) {
-	$_temp_logout = $items['customer-logout'];
-	unset($items['customer-logout']);
-	$items['courses'] = __( 'My Courses', 'woordle' );
-	$items['customer-logout'] = $_temp_logout;
+
+	$add_tab = get_option( 'woordle_use_woocommerce_account_page' );
+
+	if ( $add_tab == '1') {
+		$_temp_logout = $items['customer-logout'];
+		unset($items['customer-logout']);
+		$items['courses'] = __( 'My Courses', 'woordle' );
+		$items['customer-logout'] = $_temp_logout;
+	}
 	return $items;
 }
-
 add_filter( 'woocommerce_account_menu_items', 'iconic_account_menu_items', 10, 1 );
 
 function woo_add_my_courses_endpoint() {
