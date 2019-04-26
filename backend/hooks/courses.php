@@ -1,4 +1,13 @@
 <?php
+
+register_deactivation_hook( __FILE__, 'flush_rewrite_rules' );
+register_activation_hook( __FILE__, 'woo_flush_rewrites' );
+function woo_flush_rewrites() {
+	// call your CPT registration function here (it should also be hooked into 'init')
+//	myplugin_custom_post_types_registration();
+	flush_rewrite_rules();
+	die('lalal');
+}
 function woo_courses_columns( $columns ) {
 	unset( $columns['date'] );
 	unset( $columns['comments'] );

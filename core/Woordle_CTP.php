@@ -26,6 +26,7 @@ class Woordle_CTP {
 			$post_type_args = require_once ( $post_type_file );
 			register_post_type( $post_type_name, $post_type_args );
 		}
+		flush_rewrite_rules();
 	}
 
 	public function scan_taxomonies() {

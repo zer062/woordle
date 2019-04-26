@@ -18,6 +18,14 @@ class Woordle_Template {
 			}
 		}
 
+		if ( is_post_type_archive( 'courses') ) {
+			$template = WOORDLE_FRONTEND_PATH . '/templates/archive-courses.php';
+
+			if ( file_exists( get_stylesheet_directory() . '/archive-courses.php' ) ) {
+				$template = get_stylesheet_directory() . '/archive-courses.php';
+			}
+		}
+
 		return $template;
 	}
 }

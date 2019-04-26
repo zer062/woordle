@@ -8,6 +8,11 @@ function woo_enrol_user_course() {
 			die;
 		}
 
+		if ( !has_enrolled( $_POST['_woo_enrol_course'] ) ) {
+			wp_redirect($_POST['_wp_http_referer'] . '?woo_error=already_enrolled');
+			die;
+        }
+
 		$course_id = $_POST['_woo_enrol_course'];
 		$sale_woocommerce = get_field( 'woordle_woocommerce_settings_woordle_sale_course_woocommerce', $course_id );
 
@@ -22,7 +27,7 @@ function woo_enrol_user_course() {
 				$product = new WC_Product( $course_product[0]->ID );
 				add_action( 'wp', function() use($product, $course_id) {
 					WC()->cart->add_to_cart( $product->get_id(), 1 );
-					$url = get_permalink( get_option( 'woocommerce_checkout_page_id' ) );
+					$url = get_permalink( wc_get_page_id( 'cart' ) );
 					wp_redirect( $url ); die;
 				});
 			} else {
@@ -77,20 +82,30 @@ function woo_course_enrol_button() {
 		if ( !is_null( $product_id->post ) ) {
 			$product = new WC_Product( $product_id->post->ID );
         }
-
     }
+
 ?>
+
     <div class="woo-enrol-action">
-        <?php if ( woo_has_woocommerce() && get_field( 'woordle_woocommerce_settings_woordle_sale_course_woocommerce', $post->ID) ) :?>
-        <div class="woo-course-price">
-            <?php echo $product->get_price_html(); ?>
-        </div>
-        <?php endif;?>
+    <?php if ( is_user_logged_in() ) : ?>
+	    <?php if ( woo_has_woocommerce() && get_field( 'woordle_woocommerce_settings_woordle_sale_course_woocommerce', $post->ID) ) :?>
+            <div class="woo-course-price">
+			    <?php echo $product->get_price_html(); ?>
+            </div>
+	    <?php endif;?>
         <form method="post">
             <input type="hidden" name="_woo_enrol_course" value="<?php the_ID();?>">
 		    <?php wp_nonce_field('_woo_action_enrol_' . get_the_ID(), '_woo_enrol_token', true, true); ?>
-            <button type="submit" class="woo-btn"><?php _e( 'Enrol this course');?></button>
+            <button type="submit" class="woo-btn block" disabled="<?php echo ( has_enrolled( $post->ID) ) ? 'disabled' : '';?>">
+                <?php if ( !has_enrolled( $post->ID ) ) :?>
+                    <?php _e( 'Enrol this course', 'woorlde');?>
+                <?php else: ?>
+	                <?php _e( 'Already enrolled', 'woorlde');?>
+                <?php endif; ?>
+            </button>
         </form>
+    <?php else: ?>
+    <?php endif; ?>
     </div>
 
 <?php
@@ -103,6 +118,10 @@ function woo_show_alerts () {
 
 		if ( $_GET['woo_error'] === 'invalid_token' ) {
 			echo '<div class="woo-alert">' . __( 'Invalid token. Please, reload and try again', 'woordle' ) . '</div>';
+		}
+
+		if ( $_GET['woo_error'] === 'already_enrolled' ) {
+			echo '<div class="woo-alert">' . __( 'Your already did this course', 'woordle' ) . '</div>';
 		}
 	}
 }
@@ -195,3 +214,19 @@ function post_published_notification( $ID, $post ) {
 }
 
 add_action( 'publish_enrolment', 'post_published_notification', 10, 2 );
+
+function has_enrolled ( $course_id ) {
+
+    if ( !is_user_logged_in() ) {
+        return false;
+    }
+
+    $user = wp_get_current_user();
+    $enrol = new WP_Query([
+        'post_type' => 'enrolment',
+        'author' => $user->ID,
+        'post_parent' => $course_id
+    ]);
+
+    return $enrol->post != null;
+}

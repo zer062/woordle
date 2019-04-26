@@ -39,5 +39,3 @@ foreach ( $woordle_files as $class_path ) {
 		require $class_path;
 	}
 }
-
-new Woordle();

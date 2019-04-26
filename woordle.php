@@ -14,3 +14,9 @@ Text Domain: woordle
 */
 
 require 'core/autoload.php';
+new Woordle();
+function woo_enable_plugin() {
+	flush_rewrite_rules();
+}
+
+register_activation_hook( __FILE__, 'woo_enable_plugin' );

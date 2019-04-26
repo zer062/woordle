@@ -90,3 +90,44 @@
 button.woo-btn {
     width: 100%;
 }
+
+.woo-courses-course {
+    width: 25%;
+    display: inline-block;
+    padding: 5px;
+}
+
+.woo-courses-course .woo-course-image {
+    height: 150px;
+    width: 100%;
+    background-size: cover !important;
+    background-color: #ededed;
+}
+
+.woo-courses-course .woo-course-name {
+    height: 70px;
+    padding: 5px 0;
+    overflow: hidden;
+}
+
+.woo-courses-course .woo-course-price {
+    display: block;
+    width: 100%;
+}
+
+.woo-btn {
+    background-color: #dedede;
+    display: inline-block;
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    color: #1d1d1d;
+}
+
+.woo-btn.block {
+    padding: 15px;
+}
+
+.woo-btn:hover {
+    background-color: #dfdfdf;
+}

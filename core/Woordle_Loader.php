@@ -9,6 +9,10 @@ class Woordle_Loader {
 		(new Woordle_CTP())->init_woordle_ctp();
 	}
 
+	public function teste() {
+		var_dump('auii'); die;
+	}
+
 	public function setup_woordle_admin_menu() {
 		(new Woordle_Menu())->setup_woordle_menu();
 	}
