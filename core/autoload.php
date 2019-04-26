@@ -25,6 +25,8 @@ $woordle_files = [
 	WOORDLE_CORE_PATH . '/Woordle_Moodle.php',
 	WOORDLE_CORE_PATH . '/moodle/Moodle_Category.php',
 	WOORDLE_CORE_PATH . '/moodle/Moodle_Courses.php',
+	WOORDLE_CORE_PATH . '/moodle/Moodle_User.php',
+	WOORDLE_CORE_PATH . '/moodle/Moodle_Enrolment.php',
 	WOORDLE_CORE_PATH . '/functions.php',
 	WOORDLE_BACKEND_PATH . '/woocommerce/functions.php',
 ];

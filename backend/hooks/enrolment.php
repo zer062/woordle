@@ -28,17 +28,18 @@ function woo_enrol_user_course() {
 				woo_enrol_course( $course_product[0] );
 			}
 		} else {
-			woo_enrol_course( $course_product[0] );
+			woo_enrol_course( $course_id );
 		}
 	}
 }
 
 function woo_enrol_course ( $course_id ) {
+	$woordle_auto_publish_enrol = get_option( 'woordle_auto_publish_enrol' );
 	$user = wp_get_current_user();
 	$enrol_id = wp_insert_post([
 		'post_type' => 'enrolment',
 		'post_title' => '#' . $course_id . $user->ID,
-		'post_status' => 'draft',
+		'post_status' => ( $woordle_auto_publish_enrol != null && $woordle_auto_publish_enrol == '1' ) ? 'publish' : 'draft',
 		'post_parent' => $course_id,
         'post_author' => $user->ID,
 	]);
@@ -145,3 +146,29 @@ function manage_enrolment_column( $column, $post_id ) {
 }
 
 add_action( 'manage_enrolment_posts_custom_column' , 'manage_enrolment_column', 10, 2 );
+
+function post_published_notification( $ID, $post ) {
+
+    $student = get_user_by( 'ID', $post->post_author );
+    $moodle_course = (new Moodle_Course())->get_course( $post->post_parent );
+
+    if ( !is_null( $moodle_course ) ) {
+        $moodle_user = (new Moodle_User())->get_moodle_user( $student->ID );
+
+        if ( is_null( $moodle_user ) ) {
+            (new Moodle_User())->create_moodle_user(
+                $student->user_login,
+                $student->first_name,
+                $student->first_name,
+                $student->user_email,
+                $student->ID
+            );
+
+	        $moodle_user = (new Moodle_User())->get_moodle_user( $student->ID );
+        }
+
+	    (new Moodle_Enrolment())->enrol_student( $moodle_course->id, $moodle_user->id );
+    }
+}
+
+add_action( 'publish_enrolment', 'post_published_notification', 10, 2 );
