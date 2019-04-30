@@ -1,6 +1,7 @@
 <?php
+if (! defined ('ABSPATH') ) exit;
 
-function woo_sync_category_course_moodle( $category_id ) {
+function woordle_sync_category_course_moodle( $category_id ) {
 
 	if ( !isset( $_POST['taxonomy'] ) || $_POST['taxonomy'] != 'category_course' ) {
 		return;
@@ -42,4 +43,4 @@ function woo_sync_category_course_moodle( $category_id ) {
 		}
 	}
 }
-add_action( 'acf/save_post', 'woo_sync_category_course_moodle', 20 );
+add_action( 'acf/save_post', 'woordle_sync_category_course_moodle', 20 );

@@ -1,4 +1,5 @@
 <?php
+if (! defined ('ABSPATH') ) exit;
 return [
 	'labels'                => [
 		'name'                       => _x( 'Category course', 'taxonomy general name', 'woordle' ),

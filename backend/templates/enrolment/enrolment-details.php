@@ -1,7 +1,8 @@
 <?php
+    if (! defined ('ABSPATH') ) exit;
 	global $post;
 	$user = get_user_by( 'ID', $post->post_author );
-	$course = get_post($post->post_parent);
+	$course = get_post( $post->post_parent );
 ?>
 <table>
 	<tr valign="top">

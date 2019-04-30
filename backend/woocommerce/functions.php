@@ -1,10 +1,11 @@
 <?php
+if (! defined ('ABSPATH') ) exit;
 
 /**
  * Check if Woocommerce is actived
  * @return bool
  */
-function woo_has_woocommerce() {
+function woordle_has_woocommerce() {
 	if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 		return true;
 	} else {
@@ -12,7 +13,7 @@ function woo_has_woocommerce() {
 	}
 }
 
-function woo_register_course_product_type() {
+function woordle_register_course_product_type() {
 
 	class WC_Product_Course extends WC_Product {
 		public function __construct( $product = 0 ) {
@@ -22,11 +23,11 @@ function woo_register_course_product_type() {
 	}
 }
 
-if ( woo_has_woocommerce() ) {
-	add_action( 'plugins_loaded', 'woo_register_course_product_type' );
+if ( woordle_has_woocommerce() ) {
+	add_action( 'plugins_loaded', 'woordle_register_course_product_type' );
 }
 
-function woo_course_product_class( $classname, $product_type ) {
+function woordle_course_product_class( $classname, $product_type ) {
 
 	if ( $product_type == 'course' ) { // notice the checking here.
 		$classname = 'WC_Product_Course';
@@ -35,23 +36,20 @@ function woo_course_product_class( $classname, $product_type ) {
 	return $classname;
 }
 
-if ( woo_has_woocommerce() ) {
-	add_filter( 'woocommerce_product_class', 'woo_course_product_class', 10, 2 );
+if ( woordle_has_woocommerce() ) {
+	add_filter( 'woocommerce_product_class', 'woordle_course_product_class', 10, 2 );
 }
 
-
-
-function woo_add_course_product( $types ){
-	// Key should be exactly the same as in the class
+function woordle_add_course_product( $types ){
 	$types[ 'course' ] = __( 'Woordle Course', 'woordle' );
 	return $types;
 }
 
-if ( woo_has_woocommerce() ) {
-	add_filter( 'product_type_selector', 'woo_add_course_product' );
+if ( woordle_has_woocommerce() ) {
+	add_filter( 'product_type_selector', 'woordle_add_course_product' );
 }
 
-function woo_course_custom_js() {
+function woordle_course_custom_js() {
 	if ( 'product' != get_post_type() ) {
 		return;
     }
@@ -67,11 +65,11 @@ function woo_course_custom_js() {
 	</script><?php
 }
 
-if ( woo_has_woocommerce() ) {
-	add_action( 'admin_footer', 'woo_course_custom_js' );
+if ( woordle_has_woocommerce() ) {
+	add_action( 'admin_footer', 'woordle_course_custom_js' );
 }
 
-function woo_course_product_tabs( $tabs) {
+function woordle_course_product_tabs( $tabs) {
 	$tabs['course'] = array(
 		'label'		=> __( 'Woordle Course', 'woordle' ),
 		'target'	=> 'course_options',
@@ -80,40 +78,26 @@ function woo_course_product_tabs( $tabs) {
 	return $tabs;
 }
 
-if ( woo_has_woocommerce() ) {
-	add_filter( 'woocommerce_product_data_tabs', 'woo_course_product_tabs' );
+if ( woordle_has_woocommerce() ) {
+	add_filter( 'woocommerce_product_data_tabs', 'woordle_course_product_tabs' );
 }
 /**
  * Contents of the rental options product tab.
  */
-function woo_course_options_product_tab_content() {
+function woordle_course_options_product_tab_content() {
 
 	include WOORDLE_BACKEND_PATH . '/templates/woocommerce/woordle-course-product-tab.php';
 }
 
-if ( woo_has_woocommerce() ) {
-	add_action( 'woocommerce_product_data_panels', 'woo_course_options_product_tab_content' );
+if ( woordle_has_woocommerce() ) {
+	add_action( 'woocommerce_product_data_panels', 'woordle_course_options_product_tab_content' );
 }
-      /**
-       * Save the custom fields.
-       */
-      function save_rental_option_field( $post_id ) {
-	      $rental_option = isset( $_POST['_enable_course_option'] ) ? 'yes' : 'no';
-	      update_post_meta( $post_id, '_enable_course_option', $rental_option );
-	      if ( isset( $_POST['_text_input_y'] ) ) :
-		      update_post_meta( $post_id, '_text_input_y', sanitize_text_field( $_POST['_text_input_y'] ) );
-	      endif;
-      }
-      add_action( 'woocommerce_process_product_meta_course', 'save_rental_option_field'  );
-      add_action( 'woocommerce_process_product_meta_variable_course', 'save_rental_option_field'  );
-      /**
-       * Hide Attributes data panel.
-       */
-function woo_hide_course_attributes_data_panel( $tabs ) {
+
+function woordle_hide_course_attributes_data_panel( $tabs ) {
 	$tabs['attribute']['class'][] = 'hide_if_course hide_if_variable_course';
 	return $tabs;
 }
 
-if ( woo_has_woocommerce() ) {
-	add_filter( 'woocommerce_product_data_tabs', 'woo_hide_course_attributes_data_panel' );
+if ( woordle_has_woocommerce() ) {
+	add_filter( 'woocommerce_product_data_tabs', 'woordle_hide_course_attributes_data_panel' );
 }

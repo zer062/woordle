@@ -1,4 +1,6 @@
 <?php
+    if (! defined ('ABSPATH') ) exit;
+
 	$user = wp_get_current_user();
 	$enrolments = get_posts([
 		'post_type' => 'enrolment',

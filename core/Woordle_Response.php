@@ -1,5 +1,5 @@
 <?php
-
+if (! defined ('ABSPATH') ) exit;
 class Woordle_Response {
 
 	public $status_code;

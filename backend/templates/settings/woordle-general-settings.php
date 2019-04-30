@@ -1,4 +1,5 @@
 <?php
+if (! defined ('ABSPATH') ) exit;
 $woordle_moodle_url = get_option( 'woordle_moodle_url' );
 $woordle_moodle_token = get_option( 'woordle_moodle_token' );
 $woordle_use_woocommerce_account_page = get_option( 'woordle_use_woocommerce_account_page' );

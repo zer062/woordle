@@ -12,7 +12,7 @@
 			<a href="<?php echo get_permalink();?>" alt="<?php the_title();?>"><?php the_title();?></a>
 		</div>
 		<div class="woo-course-price">
-			<?php if ( woo_has_woocommerce() && get_field( 'woordle_woocommerce_settings_woordle_sale_course_woocommerce' ) ) : ?>
+			<?php if ( woordle_has_woocommerce() && get_field( 'woordle_woocommerce_settings_woordle_sale_course_woocommerce' ) ) : ?>
 			<?php
 				$product_id = new WP_Query([
 					'post_type' => 'product',

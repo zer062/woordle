@@ -1,6 +1,7 @@
 <?php
+if (! defined ('ABSPATH') ) exit;
 
-function iconic_account_menu_items( $items ) {
+function woordle_admin_menu_items( $items ) {
 
 	$add_tab = get_option( 'woordle_use_woocommerce_account_page' );
 
@@ -12,16 +13,16 @@ function iconic_account_menu_items( $items ) {
 	}
 	return $items;
 }
-add_filter( 'woocommerce_account_menu_items', 'iconic_account_menu_items', 10, 1 );
+add_filter( 'woocommerce_account_menu_items', 'woordle_admin_menu_items', 10, 1 );
 
-function woo_add_my_courses_endpoint() {
+function woordle_add_my_courses_endpoint() {
 	add_rewrite_endpoint( 'courses', EP_PAGES );
 }
 
-add_action( 'init', 'woo_add_my_courses_endpoint' );
+add_action( 'init', 'woordle_add_my_courses_endpoint' );
 
-function woo_my_courses_endpoint_content() {
+function woordle_my_courses_endpoint_content() {
 	include_once ( WOORDLE_FRONTEND_PATH . '/templates/student-center.php' );
 }
 
-add_action( 'woocommerce_account_courses_endpoint', 'woo_my_courses_endpoint_content' );
+add_action( 'woocommerce_account_courses_endpoint', 'woordle_my_courses_endpoint_content' );

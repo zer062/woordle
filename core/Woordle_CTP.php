@@ -1,5 +1,5 @@
 <?php
-
+if (! defined ('ABSPATH') ) exit;
 class Woordle_CTP {
 
 	public function init_woordle_ctp() {

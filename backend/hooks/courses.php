@@ -1,14 +1,13 @@
 <?php
+if (! defined ('ABSPATH') ) exit;
 
 register_deactivation_hook( __FILE__, 'flush_rewrite_rules' );
-register_activation_hook( __FILE__, 'woo_flush_rewrites' );
-function woo_flush_rewrites() {
-	// call your CPT registration function here (it should also be hooked into 'init')
-//	myplugin_custom_post_types_registration();
+register_activation_hook( __FILE__, 'woordle_flush_rewrites' );
+function woordle_flush_rewrites() {
 	flush_rewrite_rules();
-	die('lalal');
 }
-function woo_courses_columns( $columns ) {
+
+function woordle_courses_columns( $columns ) {
 	unset( $columns['date'] );
 	unset( $columns['comments'] );
 	$columns['woordle_course_woocommerce_product'] = __( 'Woocommerce Product', 'woordle' );
@@ -17,9 +16,9 @@ function woo_courses_columns( $columns ) {
 	return $columns;
 }
 
-add_filter( 'manage_courses_posts_columns', 'woo_courses_columns' );
+add_filter( 'manage_courses_posts_columns', 'woordle_courses_columns' );
 
-function manage_courses_column( $column, $post_id ) {
+function woordle_manage_courses_column( $column, $post_id ) {
 	switch ( $column ) {
 
 		case 'woordle_course_woocommerce_product' :
@@ -38,9 +37,9 @@ function manage_courses_column( $column, $post_id ) {
 	}
 }
 
-add_action( 'manage_courses_posts_custom_column' , 'manage_courses_column', 10, 2 );
+add_action( 'manage_courses_posts_custom_column' , 'woordle_manage_courses_column', 10, 2 );
 
-function woo_save_course( $course_id ) {
+function woordle_save_course( $course_id ) {
 	if( isset( $_POST['post_type'] ) && $_POST['post_type'] != 'courses' ) {
 		return;
 	}
@@ -50,9 +49,9 @@ function woo_save_course( $course_id ) {
 		$course_id
 	);
 
-	if ( woo_has_woocommerce() && $sync_woocommerce_product ) {
+	if ( woordle_has_woocommerce() && $sync_woocommerce_product ) {
 		$course = get_post( $course_id );
-		woo_sync_course_product( $course );
+		woordle_sync_course_product( $course );
 	}
 
 	$sync_moodle_course = get_field(
@@ -62,13 +61,13 @@ function woo_save_course( $course_id ) {
 
 	if ( $sync_moodle_course ) {
 		$course = get_post( $course_id );
-		woo_sync_course_moodle( $course );
+		woordle_sync_course_moodle( $course );
 	}
 }
 
-add_action( 'acf/save_post', 'woo_save_course', 20 );
+add_action( 'acf/save_post', 'woordle_save_course', 20 );
 
-function woo_sync_course_product( $course ) {
+function woordle_sync_course_product( $course ) {
 	$course_product = new WC_Product_Course();
 	$course_parent_product = get_posts([
 		'post_type' => 'product',
@@ -107,7 +106,7 @@ function woo_sync_course_product( $course ) {
 	$course_product->save();
 }
 
-function woo_set_course_categories( $args, $field, $post_id ) {
+function woordle_set_course_categories( $args, $field, $post_id ) {
 
 	if ( $field['key'] == 'field_5cbd301645c4b' ) {
 		$args['meta_query'] = [
@@ -125,9 +124,9 @@ function woo_set_course_categories( $args, $field, $post_id ) {
 
 }
 
-add_filter('acf/fields/taxonomy/query', 'woo_set_course_categories', 10, 3);
+add_filter('acf/fields/taxonomy/query', 'woordle_set_course_categories', 10, 3);
 
-function woo_sync_course_moodle( $course ) {
+function woordle_sync_course_moodle( $course ) {
 
 	$category = get_field( 'woordle_moodle_settings_woordle_moodle_course_category', $course->ID );
 	$category_moodle_id = get_field( '_woordle_moodle_category_id', 'category_course_' . $category->term_id );

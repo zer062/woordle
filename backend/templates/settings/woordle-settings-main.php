@@ -1,5 +1,5 @@
 <?php
-
+if (! defined ('ABSPATH') ) exit;
 $woordle = Woordle::get_instance();
 $tabs = $woordle->get_option_tabs();
 $active_tab = 'woordle_general_settings';

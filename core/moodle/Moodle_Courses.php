@@ -1,4 +1,5 @@
 <?php
+if (! defined ('ABSPATH') ) exit;
 
 class Moodle_Course extends Woordle_Moodle {
 

@@ -1,4 +1,5 @@
 <?php
+if (! defined ('ABSPATH') ) exit;
 
 class Woordle_Resources {
 

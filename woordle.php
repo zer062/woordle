@@ -1,4 +1,5 @@
 <?php
+if (! defined ('ABSPATH') ) exit;
 /**
  * @package Woordle
  * @version 0.0.1
@@ -15,8 +16,8 @@ Text Domain: woordle
 
 require 'core/autoload.php';
 new Woordle();
-function woo_enable_plugin() {
+function woordle_enable_plugin() {
 	flush_rewrite_rules();
 }
 
-register_activation_hook( __FILE__, 'woo_enable_plugin' );
+register_activation_hook( __FILE__, 'woordle_enable_plugin' );

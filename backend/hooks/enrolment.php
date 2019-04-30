@@ -1,22 +1,22 @@
 <?php
+if (! defined ('ABSPATH') ) exit;
+function woordle_enrol_user_course() {
 
-function woo_enrol_user_course() {
-
-	if ( $_POST && isset( $_POST['_woo_enrol_token'] ) ) {
-		if ( !wp_verify_nonce( $_POST['_woo_enrol_token'], '_woo_action_enrol_' . $_POST['_woo_enrol_course'] ) ) {
-			wp_redirect($_POST['_wp_http_referer'] . '?woo_error=invalid_token');
+	if ( $_POST && isset( $_POST['woordle_enrol_token'] ) ) {
+		if ( !wp_verify_nonce( $_POST['woordle_enrol_token'], 'woordle_action_enrol_' . $_POST['woordle_enrol_course'] ) ) {
+			wp_redirect($_POST['_wp_http_referer'] . '?woordle_error=invalid_token');
 			die;
 		}
 
-		if ( !has_enrolled( $_POST['_woo_enrol_course'] ) ) {
-			wp_redirect($_POST['_wp_http_referer'] . '?woo_error=already_enrolled');
+		if ( woordle_has_enrolled( esc_html( $_POST['woordle_enrol_course'] ) ) ) {
+			wp_redirect($_POST['_wp_http_referer'] . '?woordle_error=already_enrolled');
 			die;
         }
 
-		$course_id = $_POST['_woo_enrol_course'];
+		$course_id = esc_sql( ( esc_html( $_POST['woordle_enrol_course'] ) ) );
 		$sale_woocommerce = get_field( 'woordle_woocommerce_settings_woordle_sale_course_woocommerce', $course_id );
 
-		if ( $sale_woocommerce && woo_has_woocommerce() ) {
+		if ( $sale_woocommerce && woordle_has_woocommerce() ) {
 
 		    $course_product = get_posts([
 				'post_type' => 'product',
@@ -31,44 +31,45 @@ function woo_enrol_user_course() {
 					wp_redirect( $url ); die;
 				});
 			} else {
-				woo_enrol_course( $course_product[0] );
+				woordle_enrol_course( $course_product[0] );
 			}
 		} else {
-			woo_enrol_course( $course_id );
+			woordle_enrol_course( $course_id );
 		}
 	}
 }
 
-function woo_enrol_course ( $course_id ) {
+function woordle_enrol_course ( $course_id ) {
 	$woordle_auto_publish_enrol = get_option( 'woordle_auto_publish_enrol' );
 	$user = wp_get_current_user();
+
 	$enrol_id = wp_insert_post([
 		'post_type' => 'enrolment',
 		'post_title' => '#' . $course_id . $user->ID,
 		'post_status' => ( $woordle_auto_publish_enrol != null && $woordle_auto_publish_enrol == '1' ) ? 'publish' : 'draft',
 		'post_parent' => $course_id,
-        'post_author' => $user->ID,
+        'post_author' => $user->data->ID,
 	]);
+
 	update_field( 'enrol_woordle_enrolment_role', 'student', $enrol_id );
 	return true;
 }
-add_action( 'init', 'woo_enrol_user_course' );
+add_action( 'init', 'woordle_enrol_user_course' );
 
-function woo_create_enrol_after_new_order( $order_id ) {
+function woordle_create_enrol_after_new_order( $order_id ) {
 
     $order = wc_get_order( $order_id );
     foreach ( $order->get_items() as $order_product ) {
         $product = wc_get_product( $order_product->get_data()['product_id'] );
-
         if ( $product->get_type() === 'course' ) {
-            woo_enrol_course( $product->parent_id );
+            woordle_enrol_course( $product->parent_id );
         }
     }
 }
 
-add_action( 'woocommerce_checkout_order_processed', 'woo_create_enrol_after_new_order',  1, 1  );
+add_action( 'woocommerce_checkout_order_processed', 'woordle_create_enrol_after_new_order',  1, 1  );
 
-function woo_course_enrol_button() {
+function woordle_course_enrol_button() {
 	global $post;
 	$sale_course = get_field( 'woordle_woocommerce_settings_woordle_sale_course_woocommerce' );
 
@@ -83,21 +84,20 @@ function woo_course_enrol_button() {
 			$product = new WC_Product( $product_id->post->ID );
         }
     }
-
 ?>
 
     <div class="woo-enrol-action">
     <?php if ( is_user_logged_in() ) : ?>
-	    <?php if ( woo_has_woocommerce() && get_field( 'woordle_woocommerce_settings_woordle_sale_course_woocommerce', $post->ID) ) :?>
+	    <?php if ( woordle_has_woocommerce() && get_field( 'woordle_woocommerce_settings_woordle_sale_course_woocommerce', $post->ID ) ) :?>
             <div class="woo-course-price">
 			    <?php echo $product->get_price_html(); ?>
             </div>
 	    <?php endif;?>
         <form method="post">
-            <input type="hidden" name="_woo_enrol_course" value="<?php the_ID();?>">
-		    <?php wp_nonce_field('_woo_action_enrol_' . get_the_ID(), '_woo_enrol_token', true, true); ?>
-            <button type="submit" class="woo-btn block" disabled="<?php echo ( has_enrolled( $post->ID) ) ? 'disabled' : '';?>">
-                <?php if ( !has_enrolled( $post->ID ) ) :?>
+            <input type="hidden" name="woordle_enrol_course" value="<?php the_ID();?>">
+		    <?php wp_nonce_field('woordle_action_enrol_' . get_the_ID(), 'woordle_enrol_token', true, true); ?>
+            <button type="submit" class="woo-btn block" <?php echo ( woordle_has_enrolled( $post->ID) ) ? 'disabled' : '';?>>
+                <?php if ( !woordle_has_enrolled( $post->ID ) ) :?>
                     <?php _e( 'Enrol this course', 'woorlde');?>
                 <?php else: ?>
 	                <?php _e( 'Already enrolled', 'woorlde');?>
@@ -111,40 +111,40 @@ function woo_course_enrol_button() {
 <?php
 }
 
-add_action( 'woo_enrol_course_html', 'woo_course_enrol_button' );
+add_action( 'woordle_enrol_course_html', 'woordle_course_enrol_button' );
 
-function woo_show_alerts () {
-	if ( isset( $_GET['woo_error'] ) ) {
+function woordle_show_alerts () {
+	if ( isset( $_GET['woordle_error'] ) ) {
 
-		if ( $_GET['woo_error'] === 'invalid_token' ) {
-			echo '<div class="woo-alert">' . __( 'Invalid token. Please, reload and try again', 'woordle' ) . '</div>';
+		if ( $_GET['woordle_error'] === 'invalid_token' ) {
+			echo '<div class="woordle-alert">' . __( 'Invalid token. Please, reload and try again', 'woordle' ) . '</div>';
 		}
 
-		if ( $_GET['woo_error'] === 'already_enrolled' ) {
-			echo '<div class="woo-alert">' . __( 'Your already did this course', 'woordle' ) . '</div>';
+		if ( $_GET['woordle_error'] === 'already_enrolled' ) {
+			echo '<div class="woordle-alert">' . __( 'Your already did this course', 'woordle' ) . '</div>';
 		}
 	}
 }
 
-add_action( 'woo_alerts', 'woo_show_alerts' );
+add_action( 'woordle_alerts', 'woordle_show_alerts' );
 
-function woo_add_enrolment_metaboxes() {
+function woordle_add_enrolment_metaboxes() {
 	add_meta_box(
 		'woordle_enrol_details',
 		__( 'Enrolment details', 'woordle' ),
-		'woo_load_enroment_settings',
+		'woordle_load_enroment_settings',
 		'enrolment',
 		'normal',
 		'high'
 	);
 }
 
-add_action( 'add_meta_boxes', 'woo_add_enrolment_metaboxes' );
+add_action( 'add_meta_boxes', 'woordle_add_enrolment_metaboxes' );
 
-function woo_load_enroment_settings () {
+function woordle_load_enroment_settings () {
 	include ( WOORDLE_BACKEND_PATH . '/templates/enrolment/enrolment-details.php');
 }
-function woo_auto_publish_enrolment( $order_id, $old_status, $new_status, $order ) {
+function woordle_auto_publish_enrolment( $order_id, $old_status, $new_status, $order ) {
 
     if ( $new_status === 'completed' ) {
 	    foreach ( $order->get_items() as $order_product ) {
@@ -163,9 +163,9 @@ function woo_auto_publish_enrolment( $order_id, $old_status, $new_status, $order
     }
 };
 
-add_action( 'woocommerce_order_status_changed', 'woo_auto_publish_enrolment', 10, 4 );
+add_action( 'woocommerce_order_status_changed', 'woordle_auto_publish_enrolment', 10, 4 );
 
-function woo_enrolment_columns( $columns ) {
+function woordle_enrolment_columns( $columns ) {
 	unset( $columns['comments'] );
 	unset( $columns['date'] );
 	$columns['woordle_enrolment_student'] = __( 'Student', 'woordle' );
@@ -173,9 +173,9 @@ function woo_enrolment_columns( $columns ) {
 	return $columns;
 }
 
-add_filter( 'manage_enrolment_posts_columns', 'woo_enrolment_columns' );
+add_filter( 'manage_enrolment_posts_columns', 'woordle_enrolment_columns' );
 
-function manage_enrolment_column( $column, $post_id ) {
+function woordle_manage_enrolment_column( $column, $post_id ) {
 	switch ( $column ) {
 
 		case 'woordle_enrolment_student' :
@@ -187,13 +187,16 @@ function manage_enrolment_column( $column, $post_id ) {
 	}
 }
 
-add_action( 'manage_enrolment_posts_custom_column' , 'manage_enrolment_column', 10, 2 );
+add_action( 'manage_enrolment_posts_custom_column' , 'woordle_manage_enrolment_column', 10, 2 );
 
-function post_published_notification( $ID, $post ) {
-
+function woordle_post_published_notification( $ID, $post ) {
     $student = get_user_by( 'ID', $post->post_author );
-    $moodle_course = (new Moodle_Course())->get_course( $post->post_parent );
+    // admin user cannot be  send to Moodle
+    if ( $student->user_login == 'admin' ) {
+        return;
+    }
 
+    $moodle_course = (new Moodle_Course())->get_course( $post->post_parent );
     if ( !is_null( $moodle_course ) ) {
         $moodle_user = (new Moodle_User())->get_moodle_user( $student->ID );
 
@@ -213,9 +216,9 @@ function post_published_notification( $ID, $post ) {
     }
 }
 
-add_action( 'publish_enrolment', 'post_published_notification', 10, 2 );
+add_action( 'publish_enrolment', 'woordle_post_published_notification', 10, 2 );
 
-function has_enrolled ( $course_id ) {
+function woordle_has_enrolled ( $course_id ) {
 
     if ( !is_user_logged_in() ) {
         return false;
@@ -228,5 +231,5 @@ function has_enrolled ( $course_id ) {
         'post_parent' => $course_id
     ]);
 
-    return $enrol->post != null;
+    return count( $enrol->posts )  > 0;
 }

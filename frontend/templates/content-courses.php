@@ -11,28 +11,28 @@
 
             <div class="woo-course-the-content">
                 <?php do_action( 'woo_alerts' );?>
-                <?php if ( has_course_will_learn() ) : ?>
+                <?php if ( woordle_has_course_will_learn() ) : ?>
                     <div class="woo-course-will-learn">
                         <h3><?php _e( 'You will learn', 'woordle' );?></h3>
-			            <?php course_will_learn(); ?>
+			            <?php woordle_course_will_learn(); ?>
                     </div>
 	            <?php endif;?>
 
                 <div class="woo-course-grade">
                     <h3 class="woo-course-section-title"><?php _e( 'Course grade', 'woordle' );?></h3>
-		            <?php course_grade(); ?>
+		            <?php woordle_course_grade(); ?>
                 </div>
 
-	            <?php if ( has_course_requirements() ) : ?>
+	            <?php if ( woordle_has_course_requirements() ) : ?>
                     <div class="woo-course-requirements">
                         <h3><?php _e( 'Requirements', 'woordle' );?></h3>
-			            <?php course_requirements(); ?>
+			            <?php woordle_course_requirements(); ?>
                     </div>
 	            <?php endif;?>
 
                 <div class="woo-course-description">
                     <h3 class="woo-course-section-title"><?php _e( 'Course description', 'woordle' );?></h3>
-		            <?php course_description(); ?>
+		            <?php woordle_course_description(); ?>
                 </div>
 
             </div>
@@ -41,9 +41,9 @@
 
         <div class="woo-course-sidebar">
             <div class="woo-course-sidebar-content">
-                <?php do_action ( 'woo_enrol_course_html');?>
-	            <?php if( has_promotional_video() ): ?>
-		            <?php promotional_video(); ?>
+                <?php do_action ( 'woordle_enrol_course_html');?>
+	            <?php if( woordle_has_promotional_video() ): ?>
+		            <?php woordle_promotional_video(); ?>
 	            <?php endif; ?>
             </div>
         </div>

@@ -1,4 +1,5 @@
 <?php
+if (! defined ('ABSPATH') ) exit;
 return [
 	'woordle_moodle_url',
 	'woordle_moodle_token',

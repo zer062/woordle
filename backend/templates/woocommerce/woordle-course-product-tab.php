@@ -1,4 +1,5 @@
 <?php
+    if (! defined ('ABSPATH') ) exit;
     global $post;
     $course = get_post( $post->post_parent );
 ?>
