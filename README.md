@@ -91,41 +91,51 @@ You should enable the functions below:
 == Changelog ==
 
 = 0.9.1 =
+
     * Fix bugs and improvements
 
 = 0.9.0 =
+
     * Created single course page
     * Created archive course page
 
 = 0.8.0 =
+
     * Sync enrolment with Moodle
     * Added my courses tab in Woocommerce My Account
     * Added Student Central shortcode
 
 = 0.7.0 =
+
     * Syncing users wth Moodle
     * Fixing bugs
 
 = 0.6.0 =
+
     * Syncing course category wth Moodle
     * Syncing courses with Moodle
 
 = 0.5.0 =
+
     * Added option for setup auto enrolment
 
 = 0.4.0 =
+
     * Created enrolment by Woocommerce checkout process
     * Saving enrolment in draft status
 
 = 0.3.1 =
+
     * Created enrollment metabox
     * Created simple enrolment process
     * Added enrolment info in metabox
 
 = 0.3.0 =
+
     * Created enrolment Post type
 
 = 0.2.2 =
+
     * Allow user define if sale course with Woocommerce
     * Integrate Course with Woocommerce
     * Added Enrolment tab in course form
@@ -134,6 +144,7 @@ You should enable the functions below:
     * Added tab with course info in product form
 
 = 0.1.2 =
+
     * Created Woordle settings options
     * Added promotional tab in course form
     * Improved Woordle in admin (Create exclusive menu)
@@ -141,6 +152,7 @@ You should enable the functions below:
     * Fix bug on save Courses
 
 = 0.1.0 =
+
     * Init plugin core
     * Register Course post type
     * Created Course form
