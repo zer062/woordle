@@ -1,0 +1,133 @@
+.woo-course-header {
+    padding: 0px;
+}
+
+.woo-course-title {
+    padding: 60px 10px 10px 10px;
+}
+
+.woo-course-header h1 {
+    font-size: 2.5rem;
+    width: 63%;
+}
+
+.woo-course-content {
+    display: flex;
+    padding: 30px 0;
+}
+
+.woo-course-main-content {
+    display: inline-flex;
+    width: 65%;
+}
+
+.woo-course-the-content {
+    display: block;
+    width: 100%;
+    padding: 10px;
+}
+
+.woo-course-section-title {
+    font-size: 1.8rem;
+    margin: 20px 0;
+}
+
+.woo-course-requirements {
+    margin-top: 20px;
+}
+
+.woo-course-will-learn {
+    border: 1px solid #dedede;
+    padding: 10px;
+    display: block;
+    background-color: #efefef;
+}
+
+.woo-course-will-learn h3 {
+    margin-bottom: 20px;
+}
+
+.woo-course-sidebar {
+    width: 35%;
+}
+
+.woo-course-sidebar-content {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    position: sticky;
+    position: -webkit-sticky;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, .2);
+    color: #fff;
+}
+
+.woo-alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-radius: .25rem;
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.woo-enrol-action {
+    margin: 20px 0;
+}
+
+.woo-course-price {
+    padding: 10px 0;
+}
+
+button.woo-btn {
+    width: 100%;
+}
+
+.woo-courses-course {
+    width: 25%;
+    display: inline-block;
+    padding: 5px;
+}
+
+.woo-courses-course .woo-course-image {
+    height: 150px;
+    width: 100%;
+    background-size: cover !important;
+    background-color: #ededed;
+}
+
+.woo-courses-course .woo-course-name {
+    height: 70px;
+    padding: 5px 0;
+    overflow: hidden;
+}
+
+.woo-courses-course .woo-course-price {
+    display: block;
+    width: 100%;
+}
+
+.woo-btn {
+    background-color: #dedede;
+    display: inline-block;
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    color: #1d1d1d;
+}
+
+.woo-btn.block {
+    padding: 15px;
+}
+
+.woo-btn:hover {
+    background-color: #dfdfdf;
+}
