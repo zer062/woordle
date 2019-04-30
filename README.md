@@ -20,13 +20,13 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Wordle is the best online school management system for WordPress.
 
-== Description ==
+#### Description
 
 Wordle is the best online school management system for WordPress.
 
 With Woordle, you can earn online courses, sell them using Woocommerce, and migrate them to Moodle. All in a simple and fast way.
 
-Features:
+#### Features:
 
 * Create courses in a simple way
 * Configure how your course will be migrated to Moodle. (topics, social, etc.)
@@ -36,7 +36,7 @@ Features:
 * Enrollment approval. You can set whether your subscriptions will be automatically released or require moderator approval.
 * Automatic Migration of Moodle enrollments, whenever it is published.
 
-== Installation ==
+#### Installation
 
 This section describes how to install the plugin and get it working.
 
@@ -48,23 +48,32 @@ e.g.
 1. (Make your instructions match the desired user flow for activating and installing your plugin. Include any steps that might be needed for explanatory purposes)
 
 
-== Frequently Asked Questions ==
+#### Frequently Asked Questions
 
-= Am I required to have Woocommerce installed? =
+**Am I required to have Woocommerce installed?**
 
 No, but without Woocommerce, you will not be able to apply any type of charges in the registrations.
 
-= How do I set up Moodle to receive my courses and students? =
+**How do I set up Moodle to receive my courses and students?**
 
 You should set up a webservice. You can see our documentation [here](https://zero62.com/woordle/docs)
 
-= What functions should I enable in the Moodle webservice?students? =
+**What functions should I enable in the Moodle webservice?students?**
 
 You should enable the functions below:
 
-`core_course_create_categories`, `core_course_create_courses`, `core_course_get_categories`, `core_course_get_courses`, `core_course_get_courses_by_field`, `core_course_update_categories`, `core_course_update_courses`, `core_user_create_users`, `core_user_get_users`, `enrol_manual_enrol_users`
+* `core_course_create_categories`
+* `core_course_create_courses`
+* `core_course_get_categories`
+* `core_course_get_courses`
+* `core_course_get_courses_by_field`
+* `core_course_update_categories`
+* `core_course_update_courses`
+* `core_user_create_users`
+* `core_user_get_users`
+* `enrol_manual_enrol_users`
 
-== Screenshots ==
+#### Screenshots
 
 ![Course 01](https://zero62.com/plugins/woordle-images/course-01.png)
 
@@ -88,7 +97,7 @@ You should enable the functions below:
 
 ![](https://zero62.com/plugins/woordle-images/woocommerce-01.png)
 
-== Changelog ==
+#### Changelog
 
 = 0.9.1 =
 
