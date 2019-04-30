@@ -1,10 +1,4 @@
-=== Plugin Name ===
-
-Contributors: zero62
-
-Donate link: https://zero62.com
-
-Tags: moodle, lms, courses, lessons, online learning, learning management system
+### Woordle
 
 Requires at least: 5.0
 
@@ -13,12 +7,6 @@ Tested up to: 5.1.1
 Stable tag: 0.9.5
 
 Requires PHP: 5.6.*
-
-License: GPLv2 or later
-
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
-
-Wordle is the best online school management system for WordPress.
 
 #### Description
 
