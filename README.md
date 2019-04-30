@@ -1,12 +1,21 @@
 === Plugin Name ===
+
 Contributors: zero62
+
 Donate link: https://zero62.com
+
 Tags: moodle, lms, courses, lessons, online learning, learning management system
+
 Requires at least: 5.0
+
 Tested up to: 5.1.1
+
 Stable tag: 0.9.5
+
 Requires PHP: 5.6.*
+
 License: GPLv2 or later
+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Wordle is the best online school management system for WordPress.
@@ -57,17 +66,27 @@ You should enable the functions below:
 
 == Screenshots ==
 
-[https://zero62.com/plugins/woordle-images/course-01.png]
-[https://zero62.com/plugins/woordle-images/course-02.png]
-[https://zero62.com/plugins/woordle-images/course-03.png]
-[https://zero62.com/plugins/woordle-images/course-04.png]
-[https://zero62.com/plugins/woordle-images/course-categories-01.png]
-[https://zero62.com/plugins/woordle-images/enrolment-01.png]
-[https://zero62.com/plugins/woordle-images/enrolment-02.png]
-[https://zero62.com/plugins/woordle-images/moodle-01.png]
-[https://zero62.com/plugins/woordle-images/moodle-02.png]
-[https://zero62.com/plugins/woordle-images/settings-01.png]
-[https://zero62.com/plugins/woordle-images/woocommerce-01.png]
+![Course 01](https://zero62.com/plugins/woordle-images/course-01.png)
+
+![](https://zero62.com/plugins/woordle-images/course-02.png)
+
+![](https://zero62.com/plugins/woordle-images/course-03.png)
+
+![](https://zero62.com/plugins/woordle-images/course-04.png)
+
+![](https://zero62.com/plugins/woordle-images/course-categories-01.png)
+
+![](https://zero62.com/plugins/woordle-images/enrolment-01.png)
+
+![](https://zero62.com/plugins/woordle-images/enrolment-02.png)
+
+![](https://zero62.com/plugins/woordle-images/moodle-01.png)
+
+![](https://zero62.com/plugins/woordle-images/moodle-02.png)
+
+![](https://zero62.com/plugins/woordle-images/settings-01.png)
+
+![](https://zero62.com/plugins/woordle-images/woocommerce-01.png)
 
 == Changelog ==
 
